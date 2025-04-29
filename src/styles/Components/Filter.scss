@@ -1,0 +1,22 @@
+.filter {
+  &__category {
+    padding: 0 0 1rem;
+  }
+
+  &__title {
+    padding: 0 0 0.5rem;
+  }
+
+  &__list {
+    margin-bottom: 1rem;
+  }
+
+  &__item {
+    line-height: 1.7rem;
+    padding: .2rem 0;
+  }
+
+  &__input {}
+
+  &__label {}
+}
