@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import Breadcrumb from '../../components/Breadcrumb/Breadcrumb'
-import Filter from '../../components/Filter/Filter'
-import Shelf from '../../components/Product/Shelf'
+import Breadcrumb from '../../../components/Breadcrumb/Breadcrumb'
+import Filter from '../../../components/Filter/Filter'
+import Shelf from '../../../components/Product/Shelf'
 
 import { MdSortByAlpha } from "react-icons/md"
 import { LiaSortNumericDownSolid, LiaSortNumericUpAltSolid } from "react-icons/lia"

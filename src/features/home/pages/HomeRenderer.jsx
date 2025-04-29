@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { homeOrder } from '../../config'
-import { mainPageSections } from '../../config'
-import { mainPageBanners } from '../../config'
+import { homeOrder } from '../../../config'
+import { mainPageSections } from '../../../config'
+import { mainPageBanners } from '../../../config'
 
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
-import Shelf from '../../components/Product/Shelf'
+import Header from '../../../components/Header/Header'
+import Footer from '../../../components/Footer/Footer'
+import Shelf from '../../../components/Product/Shelf'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import Banner from '../../components/Banner/Banner'
+import Banner from '../../../components/Banner/Banner'
 
 /**
  *
