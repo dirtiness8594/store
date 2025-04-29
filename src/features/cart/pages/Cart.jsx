@@ -10,6 +10,8 @@ import CartPayment from './CartPayment'
 import CartOrder from './CartOrder'
 import CartSuccess from './CartSuccess'
 
+import "../styles/Checkout.scss"
+
 /**
  *
  *

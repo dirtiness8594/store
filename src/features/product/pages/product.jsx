@@ -9,6 +9,8 @@ import 'react-tabs/style/react-tabs.css'
 import ProductTop from '../sections/productTop'
 import ProductBottom from '../sections/productBottom'
 
+import "../styles/Product.scss"
+
 
 /**
  *

@@ -1,8 +1,7 @@
 import React from 'react'
 
-// import '../../styles/Main.scss'
-
 import { footerPages } from '../../../config'
+import "../../styles/Footer.scss"
 
 /**
  *

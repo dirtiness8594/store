@@ -1,4 +1,5 @@
-@import "../Mixins.scss";
+@use "../../../shared/styles/Variables.scss" as *;
+@import "../../../shared/styles/Mixins.scss";
 
 .banner {
   &__head {

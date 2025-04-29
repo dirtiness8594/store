@@ -7,6 +7,8 @@ import Quick from './sections/Quick/Quick'
 import Peak from './sections/Peak'
 import Card from './sections/Card'
 
+import "./styles/Banner.scss"
+
 /**
  *
  * @param {*} param0
