@@ -1,6 +1,6 @@
 import React from 'react'
 import HomeRenderer from './HomeRenderer'
-import Categories from '../../../components/Banner/Sections/Categories/Categories'
+import Categories from '../../banner/sections/Categories/Categories'
 
 /**
  *

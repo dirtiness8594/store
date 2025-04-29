@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import Single from '../../../components/Banner/Sections/Single'
+
+import Single from '../../banner/sections/Single'
 import { getProductData } from '../../../api'
 
 import 'react-tabs/style/react-tabs.css'

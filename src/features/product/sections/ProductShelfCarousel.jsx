@@ -2,7 +2,7 @@ import React from 'react'
 import { useMediaQuery } from 'react-responsive'
 import Slider from 'react-slick'
 
-import ProductCarousel from './Product/ProductCarousel'
+import ProductCarousel from './ProductCarousel'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 
 import 'slick-carousel/slick/slick.css'

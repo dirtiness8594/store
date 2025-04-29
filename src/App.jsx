@@ -1,20 +1,13 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import HomeIndexPage from './features/home/pages'
-// import ProductIndexPage from './pages/Product/ProductIndexPage'
-
 import ProductIndexPage from './features/product/pages'
-
-
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import Cart from './pages/Cart/Cart'
-
+import Header from './shared/components/Header/Header'
+import Footer from './shared/components/Footer/Footer'
+import Cart from './features/cart/pages'
 import './styles/Main.scss'
-// import Category from './pages/Category/Category'
 import Category from "./features/category/pages"
 import InstitutionalIndexPage from './features/institutional/pages'
-// import InstitutionalIndexPage from './pages/Institucional/InstitutionalIndexPage'
 
 /**
  *

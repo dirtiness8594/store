@@ -1,8 +1,8 @@
 import React from 'react'
 
-import '../../styles/Main.scss'
+// import '../../styles/Main.scss'
 
-import { footerPages } from '../../config'
+import { footerPages } from '../../../config'
 
 /**
  *

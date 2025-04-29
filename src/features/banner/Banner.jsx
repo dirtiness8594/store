@@ -1,11 +1,11 @@
 import React from 'react'
-import Highlight from '../Highlight/Highlight'
+import Highlight from '../../components/Highlight/Highlight'
 
-import CheckOn from './Sections/CheckOn'
+import CheckOn from './sections/CheckOn'
 import BannerSingle from './BannerSingle'
-import Quick from './Sections/Quick/Quick'
-import Peak from './Sections/Peak'
-import Card from './Sections/Card'
+import Quick from './sections/Quick/Quick'
+import Peak from './sections/Peak'
+import Card from './sections/Card'
 
 /**
  *

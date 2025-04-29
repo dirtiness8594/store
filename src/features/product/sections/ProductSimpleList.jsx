@@ -1,7 +1,7 @@
 import React from 'react'
 
 import PropTypes from 'prop-types'
-import ProductList from './Product/ProductList'
+import ProductList from './ProductList'
 
 import '../../../styles/Main.scss'
 

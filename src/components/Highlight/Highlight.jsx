@@ -2,7 +2,7 @@ import React from 'react'
 
 import Slider from 'react-slick'
 import HighlightAdvantadges from './HighlightAdvantadges'
-import BannerSingle from '../Banner/BannerSingle'
+import BannerSingle from '../../features/banner/BannerSingle'
 import { FaAngleDown } from 'react-icons/fa'
 
 import 'slick-carousel/slick/slick.css'

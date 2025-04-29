@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../../styles/Main.scss'
+// import '../../styles/Main.scss'
 
 import { FaSearch, FaAngleDown } from 'react-icons/fa'
 import { BiUserCircle, BiMapPin, BiSearch } from 'react-icons/bi'
@@ -11,9 +11,9 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { GiKnockedOutStars, GiStarSwirl, GiGalaxy } from 'react-icons/gi'
 import { GrUpdate, GrMenu } from 'react-icons/gr'
 
-import { menuPages } from '../../config'
+import { menuPages } from '../../../config'
 
-import useAppStore from '../../../store';
+import useAppStore from '../../../../store';
 
 /**
  *
