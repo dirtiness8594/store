@@ -159,6 +159,7 @@
   &__item {
     display: inline-flex;
     align-items: center;
+    padding: 0.5rem 0;
 
     &--user {
     }
@@ -225,9 +226,12 @@
   }
 
   &__search {
+    display: inline-flex;
     flex-grow: 0.5;
     position: relative;
-    padding-right: 1rem;
+    padding: 0 0.5rem;
+    border: 2px solid black;
+    border-radius: 0.5rem;
 
     &__icon {
       position: absolute;
@@ -249,9 +253,13 @@
     width: 100%;
     height: 32px;
     border-radius: 5px;
-    border: 2px solid $border-black;
+    border: unset;
     padding: 0 0.5rem;
     font-size: 0.8rem;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__menu {
@@ -309,6 +317,7 @@
     position: absolute;
     top: 100%;
     height: 90vh;
+    background-color: $background-white;
     left: 0;
     transition: all 2s;
     display: none;
@@ -322,8 +331,6 @@
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      background-color: $background-white;
-      height: 100%;
       z-index: 10001;
     }
 

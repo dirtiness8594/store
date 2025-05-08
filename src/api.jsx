@@ -577,18 +577,18 @@ export async function getHeaderPagesData() {
   try {
     // const storeInfoData = await fetchData('/storeInfo')
     const headerPagesData = [
-      {
-        id: "01",
-        page: "Home",
-        url: "/",
-        subPages: [
-          {
-            id: null,
-            name: null,
-            url: null,
-          },
-        ],
-      },
+      // {
+      //   id: "01",
+      //   page: "Home",
+      //   url: "/",
+      //   subPages: [
+      //     {
+      //       id: null,
+      //       name: null,
+      //       url: null,
+      //     },
+      //   ],
+      // },
       {
         id: "02",
         page: "Home",
@@ -598,21 +598,40 @@ export async function getHeaderPagesData() {
             id: "021",
             name: "Page 01",
             url: "/021",
+            banner: "https://picsum.photos/300/200",
           },
-        ],
-      },
-      {
-        id: "03",
-        page: "Home",
-        url: "/",
-        subPages: [
           {
-            id: "031",
+            id: "022",
+            name: "Page 02",
+            url: "/021",
+            banner: "https://picsum.photos/300/200",
+          },
+          {
+            id: "023",
             name: "Page 03",
-            url: "/031",
+            url: "/021",
+            banner: "https://picsum.photos/300/200",
+          },
+          {
+            id: "024",
+            name: "Page 04",
+            url: "/021",
+            banner: "https://picsum.photos/300/200",
           },
         ],
       },
+      // {
+      //   id: "03",
+      //   page: "Home",
+      //   url: "/",
+      //   subPages: [
+      //     {
+      //       id: "031",
+      //       name: "Page 03",
+      //       url: "/031",
+      //     },
+      //   ],
+      // },
     ];
 
     return headerPagesData;
