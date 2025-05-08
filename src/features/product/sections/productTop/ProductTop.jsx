@@ -1,14 +1,14 @@
-import React from 'react';
-import Breadcrumb from '../../../../components/Breadcrumb/Breadcrumb';
-import ImageGallery from 'react-image-gallery';
-import ProductDetailsIndex from '../../components/detail/Detail';
-import Sku from '../../components/sku/Sku';
-import Freight from '../../components/freights/Freights';
-import Tickets from '../../components/tickets/Tickets';
-import Amount from '../../components/amount/Amount';
-import Finalization from '../../components/finalization/Finalization';
-import Warnings from '../../components/warnings/Warnings';
-import { generateBreadcrumb } from '/src/utils/productUtils';
+import React from "react";
+import Breadcrumb from "../../../../components/Breadcrumb/Breadcrumb";
+import ImageGallery from "react-image-gallery";
+import ProductDetailsIndex from "../../components/detail/Detail";
+import Sku from "../../components/sku/Sku";
+import Freight from "../../components/freights/Freights";
+import Tickets from "../../components/tickets/Tickets";
+import Amount from "../../components/amount/Amount";
+import Finalization from "../../components/finalization/Finalization";
+import Warnings from "../../components/warnings/Warnings";
+import { generateBreadcrumb } from "/src/utils/productUtils";
 
 function ProductTop({ productData, images }) {
   return (
@@ -23,7 +23,7 @@ function ProductTop({ productData, images }) {
                 : []
             }
           />
-          <ImageGallery
+          {/* <ImageGallery
             items={images}
             showNav={false}
             thumbnailPosition="bottom"
@@ -31,7 +31,7 @@ function ProductTop({ productData, images }) {
             showFullscreenButton={false}
             slideDuration={400}
             showPlayButton={false}
-          />
+          /> */}
         </section>
         <section className="product__about">
           <div className="product__tech">

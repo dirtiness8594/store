@@ -1,4 +1,4 @@
-// @use "../Variables" as *;
+@use "./Variables" as *;
 
 .header {
   width: 100%;
@@ -15,7 +15,8 @@
   &__top {
     display: flex;
     border-top: 2px solid;
-    border-image: linear-gradient(to right,
+    border-image: linear-gradient(
+        to right,
         violet 0%,
         violet 16.66%,
         indigo 16.66%,
@@ -27,7 +28,9 @@
         yellow 66.66%,
         yellow 83.33%,
         orange 83.33%,
-        orange 100%) 1;
+        orange 100%
+      )
+      1;
     column-gap: 1.5rem;
     justify-content: flex-end;
     padding: 0.5rem 0 0;
@@ -50,13 +53,17 @@
       }
     }
 
-    @media (max-width: 767px) {}
+    @media (max-width: 767px) {
+    }
 
-    @media (max-width: 991px) {}
+    @media (max-width: 991px) {
+    }
 
-    @media (max-width: 1199px) {}
+    @media (max-width: 1199px) {
+    }
 
-    @media (max-width: 1399px) {}
+    @media (max-width: 1399px) {
+    }
   }
 
   &__bottom {
@@ -69,13 +76,17 @@
       padding: 1rem 0.5rem;
     }
 
-    @media (max-width: 767px) {}
+    @media (max-width: 767px) {
+    }
 
-    @media (max-width: 991px) {}
+    @media (max-width: 991px) {
+    }
 
-    @media (max-width: 1199px) {}
+    @media (max-width: 1199px) {
+    }
 
-    @media (max-width: 1399px) {}
+    @media (max-width: 1399px) {
+    }
   }
 
   &__logo {
@@ -85,19 +96,21 @@
 
     &__icon {
       font-size: 3rem;
-      font-family: 'Linefont';
+      font-family: "Linefont";
       margin-top: -1.1rem;
       display: none;
     }
 
-    &__image {}
+    &__image {
+    }
 
     &__title {
       font-size: 1.2rem;
     }
   }
 
-  &__nav {}
+  &__nav {
+  }
 
   &__list {
     display: inline-flex;
@@ -106,13 +119,17 @@
       display: none;
     }
 
-    @media (max-width: 767px) {}
+    @media (max-width: 767px) {
+    }
 
-    @media (max-width: 991px) {}
+    @media (max-width: 991px) {
+    }
 
-    @media (max-width: 1199px) {}
+    @media (max-width: 1199px) {
+    }
 
-    @media (max-width: 1399px) {}
+    @media (max-width: 1399px) {
+    }
   }
 
   &__menumobile {
@@ -126,29 +143,34 @@
       display: block;
     }
 
-    @media (max-width: 767px) {}
+    @media (max-width: 767px) {
+    }
 
-    @media (max-width: 991px) {}
+    @media (max-width: 991px) {
+    }
 
-    @media (max-width: 1199px) {}
+    @media (max-width: 1199px) {
+    }
 
-    @media (max-width: 1399px) {}
+    @media (max-width: 1399px) {
+    }
   }
 
   &__item {
     display: inline-flex;
     align-items: center;
+    padding: 0.5rem 0;
 
-    &--user {}
+    &--user {
+    }
   }
 
   &__link {
     text-decoration: none;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     color: $font-black;
     font-size: $default-font-size;
     font-weight: 600;
-
 
     &__icon {
       margin: 0 0.5rem -3px 0;
@@ -165,7 +187,8 @@
       font-size: 0.8rem;
     }
 
-    &--all {}
+    &--all {
+    }
 
     &--phone {
       font-size: 1.2rem;
@@ -203,9 +226,12 @@
   }
 
   &__search {
+    display: inline-flex;
     flex-grow: 0.5;
     position: relative;
-    padding-right: 1rem;
+    padding: 0 0.5rem;
+    border: 2px solid black;
+    border-radius: 0.5rem;
 
     &__icon {
       position: absolute;
@@ -220,15 +246,20 @@
     display: none;
   }
 
-  &__ads {}
+  &__ads {
+  }
 
   &__input {
     width: 100%;
     height: 32px;
     border-radius: 5px;
-    border: 2px solid $border-black;
+    border: unset;
     padding: 0 0.5rem;
     font-size: 0.8rem;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__menu {
@@ -286,6 +317,7 @@
     position: absolute;
     top: 100%;
     height: 90vh;
+    background-color: $background-white;
     left: 0;
     transition: all 2s;
     display: none;
@@ -299,12 +331,11 @@
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      background-color: $background-white;
-      height: 100%;
       z-index: 10001;
     }
 
-    &__item {}
+    &__item {
+    }
 
     &__anchor {
       text-decoration: none;
