@@ -118,12 +118,14 @@
         margin: 1rem 0 0;
         border: none;
         text-align: left;
-        padding: 0;
+        padding: 1rem 0 0.2rem;
         cursor: pointer;
         font-size: 1rem;
-        // text-transform: lowercase;
-        // text-decoration: underline;
         border-bottom: 1px solid black;
+
+        svg {
+          margin: 0 0 -3px 0.5rem;
+        }
       }
     }
     &--highlight {
@@ -202,7 +204,12 @@
   &__seemore {
     border-bottom: 1px solid black;
     display: inline-block;
-    padding: 1rem 0 0;
+    padding: 1rem 0 0.2rem;
+    cursor: pointer;
+
+    svg {
+      margin: 0 0 -3px 0.5rem;
+    }
   }
 
   &__checkon {

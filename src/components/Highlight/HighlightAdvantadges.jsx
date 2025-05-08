@@ -1,5 +1,6 @@
 import Slider from "react-slick";
 import { useMediaQuery } from "react-responsive";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -56,7 +57,10 @@ function HighlightAdvantadges() {
               />
               <div className="div banner__description">
                 <span className="banner__name">{banner.name}</span>
-                <span className="banner__seemore">{banner.link}</span>
+                <span className="banner__seemore">
+                  {banner.link}
+                  <FaArrowRightLong />
+                </span>
               </div>
             </div>
           );
