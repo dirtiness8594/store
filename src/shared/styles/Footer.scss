@@ -1,3 +1,5 @@
+@use "./Variables" as *;
+
 .footer {
   background-color: $background-white;
   padding: 32px 0 0;
@@ -24,14 +26,15 @@
       font-size: 1.1rem;
     }
 
-    &__item {}
+    &__item {
+    }
 
     &__link {
       padding: 16px 0;
       text-decoration: none;
       color: $font-black;
       line-height: 2rem;
-      font-size: .9rem;
+      font-size: 0.9rem;
       font-weight: 500;
 
       &--name {
