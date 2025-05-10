@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import Single from "../../banner/sections/Single";
 import { getProductData } from "../../../api";
 
-import "react-tabs/style/react-tabs.css";
-import ProductTop from "../sections/productTop";
-import ProductBottom from "../sections/productBottom";
+// import "react-tabs/style/react-tabs.css";
+import ProductTop from "../sections/top";
+import Bottom from "../sections/bottom";
 
 import "../styles/Product.scss";
 
@@ -53,7 +53,7 @@ function ProductIndexPage() {
   return (
     <div className="product">
       <ProductTop productData={productData} images={productData?.images} />
-      <ProductBottom productData={productData} />
+      <Bottom productData={productData} />
       <Single banner={productData?.bannerFooter} />
     </div>
   );

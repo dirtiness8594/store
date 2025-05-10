@@ -3,7 +3,7 @@ import ProductCharacteristics from '../../../../components/Product/Sections/Prod
 import ProductDescription from '../../../../components/Product/Sections/ProductDescription';
 import ProductReview from '../../components/reviews/Reviews';
 
-function ProductBottom({ productData }) {
+function Bottom({ productData }) {
   return (
     <div className="product__bottom">
       <ProductCharacteristics characteristics={productData?.characteristics} />
@@ -13,4 +13,4 @@ function ProductBottom({ productData }) {
   );
 }
 
-export default ProductBottom;
+export default Bottom;

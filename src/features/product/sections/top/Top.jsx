@@ -10,7 +10,7 @@ import Finalization from "../../components/finalization/Finalization";
 import Warnings from "../../components/warnings/Warnings";
 import { generateBreadcrumb } from "/src/utils/productUtils";
 
-function ProductTop({ productData, images }) {
+function Top({ productData, images }) {
   return (
     <div className="product__top">
       <div className="product__wrap">
@@ -57,4 +57,4 @@ function ProductTop({ productData, images }) {
   );
 }
 
-export default ProductTop;
+export default Top;
