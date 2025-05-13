@@ -1,17 +1,22 @@
 import { setLocalStorageItem } from "./localStorage";
 
-// const apiUrl = process.env.REACT_APP_API_URL
+const apiUrl = import.meta.env.VITE_FIREBASE_DATABASE_URL
 
 export async function fetchData(endpoint) {
-  const response = await fetch(`${apiUrl}/${endpoint}`);
+  const url = `${apiUrl}/${endpoint}.json`;
+  console.log("GET", url);
+  const response = await fetch(url);
   if (!response.ok) {
     throw new Error("Não foi possível obter os dados da API.");
   }
   return response.json();
 }
 
+
 export async function postData(endpoint, data) {
-  const response = await fetch(`${apiUrl}/${endpoint}`, {
+  const url = `${apiUrl}/${endpoint}.json`;
+  console.log("POST", url, data);
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -818,119 +823,119 @@ export async function getCategoriesBannerData() {
 // Product
 export async function getProductData({ productId }) {
   try {
-    // const productData = await fetchData(`/product/${productId}`)
-    const productData = {
-      id: "produto-123",
-      name: "Bose Phone",
-      fullName: "Bose Phone Bose Phone Bose Phone Bose Phone",
-      type: "wholesale",
-      availability: true,
-      stock: 100,
-      info: {
-        name: "Bose Phone",
-        fullName: "Bose Phone Bose Phone Bose Phone Bose Phone",
-        url: "/fpsdjif",
-        details: "Lorem ipsum",
-      },
-      category: {
-        name: "Phone",
-        path: "phone",
-      },
-      details: "Lorem ipsum",
-      images: [
-        {
-          original: "https://picsum.photos/900/900",
-          thumbnail: "https://picsum.photos/50/50",
-        },
-        {
-          original: "https://picsum.photos/900/900",
-          thumbnail: "https://picsum.photos/50/50",
-        },
-      ],
-      price: {
-        oldPrice: "9.9",
-        newPrice: "6.9",
-        installment: {
-          amount: 12,
-          value: "7.9",
-          fees: false,
-        },
-      },
-      skus: [
-        {
-          id: "10",
-          color: {
-            id: "16",
-            name: "Azul",
-            hexCode: "#00f",
-            amount: 10,
-          },
-          size: {
-            id: "15",
-            name: "Azul",
-            hexCode: "#0f0",
-            amount: 10,
-          },
-        },
-      ],
-      delivery: {
-        hasUserLocation: false,
-        fastDelivery: true,
-        dayUntilDelivery: {
-          firstDayExpected: 2,
-          lastDayExpected: 4,
-        },
-        hasPickUpStore: true,
-        daysUntilPickUpStore: 3,
-      },
-      ticket: ["%PRIMEIRA10"],
-      characteristics: [
-        {
-          id: "89",
-          title: "Característica 1",
-          description: "Descrição da Característica 1",
-        },
-        {
-          id: "90",
-          title: "Característica 2",
-          description: "Descrição da Característica 2",
-        },
-        {
-          id: "91",
-          title: "Característica 3",
-          description: "Descrição da Característica 3",
-        },
-      ],
-      reviews: {
-        id: "oiuyt",
-        amount: 15,
-        average: 5,
-        list: [
-          {
-            id: "review-1",
-            description: "Otimooo produtoooooo",
-            tags: ["Xis", "Ipsilon"],
-            likes: 10,
-            dislikes: 10,
-          },
-        ],
-      },
-      questions: {
-        id: "212",
-        list: [
-          {
-            id: "021",
-            question: "Qual é",
-            answer: "Resposta",
-          },
-        ],
-      },
-      bannerFooter: {
-        id: "",
-        image: "https://via.placeholder.com/1200x300",
-        url: "/",
-      },
-    };
+    const productData = await fetchData(`products/${productId}`)
+    // const productData = {
+    //   id: "produto-123",
+    //   name: "Bose Phone",
+    //   fullName: "Bose Phone Bose Phone Bose Phone Bose Phone",
+    //   type: "wholesale",
+    //   availability: true,
+    //   stock: 100,
+    //   info: {
+    //     name: "Bose Phone",
+    //     fullName: "Bose Phone Bose Phone Bose Phone Bose Phone",
+    //     url: "/fpsdjif",
+    //     details: "Lorem ipsum",
+    //   },
+    //   category: {
+    //     name: "Phone",
+    //     path: "phone",
+    //   },
+    //   details: "Lorem ipsum",
+    //   images: [
+    //     {
+    //       original: "https://picsum.photos/900/900",
+    //       thumbnail: "https://picsum.photos/50/50",
+    //     },
+    //     {
+    //       original: "https://picsum.photos/900/900",
+    //       thumbnail: "https://picsum.photos/50/50",
+    //     },
+    //   ],
+    //   price: {
+    //     oldPrice: "9.9",
+    //     newPrice: "6.9",
+    //     installment: {
+    //       amount: 12,
+    //       value: "7.9",
+    //       fees: false,
+    //     },
+    //   },
+    //   skus: [
+    //     {
+    //       id: "10",
+    //       color: {
+    //         id: "16",
+    //         name: "Azul",
+    //         hexCode: "#00f",
+    //         amount: 10,
+    //       },
+    //       size: {
+    //         id: "15",
+    //         name: "Azul",
+    //         hexCode: "#0f0",
+    //         amount: 10,
+    //       },
+    //     },
+    //   ],
+    //   delivery: {
+    //     hasUserLocation: false,
+    //     fastDelivery: true,
+    //     dayUntilDelivery: {
+    //       firstDayExpected: 2,
+    //       lastDayExpected: 4,
+    //     },
+    //     hasPickUpStore: true,
+    //     daysUntilPickUpStore: 3,
+    //   },
+    //   ticket: ["%PRIMEIRA10"],
+    //   characteristics: [
+    //     {
+    //       id: "89",
+    //       title: "Característica 1",
+    //       description: "Descrição da Característica 1",
+    //     },
+    //     {
+    //       id: "90",
+    //       title: "Característica 2",
+    //       description: "Descrição da Característica 2",
+    //     },
+    //     {
+    //       id: "91",
+    //       title: "Característica 3",
+    //       description: "Descrição da Característica 3",
+    //     },
+    //   ],
+    //   reviews: {
+    //     id: "oiuyt",
+    //     amount: 15,
+    //     average: 5,
+    //     list: [
+    //       {
+    //         id: "review-1",
+    //         description: "Otimooo produtoooooo",
+    //         tags: ["Xis", "Ipsilon"],
+    //         likes: 10,
+    //         dislikes: 10,
+    //       },
+    //     ],
+    //   },
+    //   questions: {
+    //     id: "212",
+    //     list: [
+    //       {
+    //         id: "021",
+    //         question: "Qual é",
+    //         answer: "Resposta",
+    //       },
+    //     ],
+    //   },
+    //   bannerFooter: {
+    //     id: "",
+    //     image: "https://via.placeholder.com/1200x300",
+    //     url: "/",
+    //   },
+    // };
 
     // setLocalStorageItem('mainPageBanner', mainPageBannerData)
     return productData;
