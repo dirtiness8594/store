@@ -1,12 +1,37 @@
-# React + Vite
+#  🛒 store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Store is a fully functional e-commerce front-end built with modern web technologies. Designed for educational and portfolio purposes, it includes the core features expected in a real online store — from product listing to shopping cart and user reviews.
 
-Currently, two official plugins are available:
+This project showcases practical front-end skills in building scalable and interactive interfaces for digital commerce.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+### 📦 installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+01. git clone https://codeberg.org/themandalorian/store.git
+```
+
+### 🥢 usage
+
+```bash
+01. cd store
+02. npm install
+03. npm run dev
+04. Open your browser and navigate to http://localhost:5173
+```
+### 💫 features
+
+### 🪡 development
+
+After clone, feel free to customize the theme.
+
+### 📕 updates
+
+See the UPDATE.me file for changelogs and upcoming features.
+
+### 📜 license
+[MIT](https://choosealicense.com/licenses/mit/)
+
+### 🧩 creator
+
+@themandalorian
