@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import Breadcrumb from "../../../components/Breadcrumb/Breadcrumb";
-import Filter from "../../../components/Filter/Filter";
+// import Breadcrumb from "../../../components/Breadcrumb/Breadcrumb";
+// import Filter from "../../../components/Filter/Filter";
 import Shelf from "../../product/sections/Shelf";
 
 import { MdSortByAlpha } from "react-icons/md";
@@ -80,13 +80,13 @@ function Category() {
       <div className="category__wrapper">
         <header className="category__header">
           <div className="category__name">Phones</div>
-          <Breadcrumb
+          {/* <Breadcrumb
             style="breadcrumb--category"
             paths={[
               { label: "Home", url: "/" },
               { label: "Phones", url: "/" },
             ]}
-          />
+          /> */}
           <div className="category__order">
             <button className="category__button category__button--filter">
               <LiaSortNumericDownSolid />
@@ -110,7 +110,7 @@ function Category() {
                         <select className="category__filter category__filter--">
                             <option>Preço</option>
                         </select> */}
-            <Filter categoryId={id} />
+            {/* <Filter categoryId={id} /> */}
           </div>
         </aside>
         <main className="category__main">

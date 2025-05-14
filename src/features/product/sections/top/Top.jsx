@@ -1,5 +1,5 @@
 import React from "react";
-import Breadcrumb from "../../../../components/Breadcrumb/Breadcrumb";
+// import Breadcrumb from "../../../../components/Breadcrumb/Breadcrumb";
 import ImageGallery from "react-image-gallery";
 import ProductDetailsIndex from "../../components/detail/Detail";
 import Sku from "../../components/sku/Sku";
@@ -15,14 +15,14 @@ function Top({ productData, images }) {
     <div className="product__top">
       <div className="product__wrap">
         <section className="product__zoom">
-          <Breadcrumb
+          {/* <Breadcrumb
             style="breadcrumb--product"
             paths={
               productData?.info && productData?.category
                 ? generateBreadcrumb(productData.info, productData.category)
                 : []
             }
-          />
+          /> */}
           {/* <ImageGallery
             items={images}
             showNav={false}
