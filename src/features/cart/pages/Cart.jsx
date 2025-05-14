@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import CartHeader from './CartHeader'
-import CartStepsAndActions from './CartSteps'
-import CartFooter from './CartFooter'
-import CartProduct from './CartProduct'
-import CartShipping from './CartShipping'
-import CartPayment from './CartPayment'
-import CartOrder from './CartOrder'
-import CartSuccess from './CartSuccess'
+import CartHeader from '../components/header/'
+import CartStepsAndActions from '../components/steps'
+import CartFooter from '../components/footer/'
+import CartProduct from '../components/product/'
+import CartShipping from '../components/shipping/'
+import CartPayment from '../components/payment/'
+import CartOrder from '../components/order/'
+import CartSuccess from '../components/sucess/'
 
 import "../styles/Checkout.scss"
 
@@ -22,7 +22,7 @@ const Cart = () => {
 
   // Config
   const steps = ['Cart', 'Shipping', 'Payment', 'Order', 'Place Order']
-  const [currentStep, setCurrentStep] = useState(3)
+  const [currentStep, setCurrentStep] = useState(0)
   const [showNextStep, setShowNextStep] = useState(true)
 
   // Data

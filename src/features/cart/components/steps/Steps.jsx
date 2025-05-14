@@ -8,7 +8,7 @@ import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
  *
  */
 
-const CheckoutSteps = ({ currentStep, steps }) => {
+const Steps = ({ currentStep, steps }) => {
   const navigateTo = useNavigate()
 
   // NextStep
@@ -64,4 +64,4 @@ const CheckoutSteps = ({ currentStep, steps }) => {
   )
 }
 
-export default CheckoutSteps
+export default Steps

@@ -12,7 +12,7 @@ import 'slick-carousel/slick/slick-theme.css'
  * @returns
  */
 
-const CartProduct = ({ cartItems, setCartItems, total, totalPrice }) => {
+const Product = ({ cartItems, setCartItems, total, totalPrice }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 })
   const slider = React.createRef()
 
@@ -120,4 +120,4 @@ const CartProduct = ({ cartItems, setCartItems, total, totalPrice }) => {
   )
 }
 
-export default CartProduct
+export default Product

@@ -5,7 +5,7 @@ import { BsPencil } from 'react-icons/bs'
  *
  */
 
-const CartSuccess = ({
+const Success = ({
   shippingInfo,
   paymentInfo,
   total,
@@ -62,4 +62,4 @@ const CartSuccess = ({
   )
 }
 
-export default CartSuccess
+export default Success

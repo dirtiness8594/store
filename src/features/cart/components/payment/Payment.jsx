@@ -5,7 +5,7 @@ import { BsArrowRight } from 'react-icons/bs'
  *
  */
 
-const CartPayment = ({ paymentInfo, setPaymentInfo, handleInputChange }) => {
+const Payment = ({ paymentInfo, setPaymentInfo, handleInputChange }) => {
   return (
     <section>
       <div className='checkout__wrap'>
@@ -72,4 +72,4 @@ const CartPayment = ({ paymentInfo, setPaymentInfo, handleInputChange }) => {
   )
 }
 
-export default CartPayment
+export default Payment

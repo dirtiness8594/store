@@ -3,7 +3,7 @@
  *
  */
 
-const CartOrder = ({ shippingInfo, paymentInfo, totalPrice, total }) => {
+const Order = ({ shippingInfo, paymentInfo, totalPrice, total }) => {
   return (
     <section>
       <div className='checkout__wrap'>
@@ -36,4 +36,4 @@ const CartOrder = ({ shippingInfo, paymentInfo, totalPrice, total }) => {
   )
 }
 
-export default CartOrder
+export default Order

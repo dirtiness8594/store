@@ -6,7 +6,7 @@ import { BsArrowRight, BsArrowLeft } from 'react-icons/bs'
  * @returns
  */
 
-const CartShipping = ({ shippingInfo, setShippingInfo, handleInputChange }) => {
+const Shipping = ({ shippingInfo, setShippingInfo, handleInputChange }) => {
   return (
     <section>
       <div className='checkout__wrap'>
@@ -95,4 +95,4 @@ const CartShipping = ({ shippingInfo, setShippingInfo, handleInputChange }) => {
   )
 }
 
-export default CartShipping
+export default Shipping
