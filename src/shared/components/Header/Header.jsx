@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { FaSearch, FaAngleDown } from "react-icons/fa";
 import { BiUserCircle, BiMapPin, BiSearch } from "react-icons/bi";
@@ -12,6 +12,7 @@ import { GrUpdate, GrMenu } from "react-icons/gr";
 import { menuPages } from "../../../config";
 import "../../styles/Header.scss";
 import useAppStore from "../../../../store";
+import QuickCart from "../../../features/cart/components/quickcart/QuickCart";
 
 /**
  *
@@ -21,6 +22,19 @@ import useAppStore from "../../../../store";
 function Header() {
   const language = useAppStore((state) => state.language);
   const setLanguage = useAppStore((state) => state.setLanguage);
+  const cartItems = [
+    {
+      name: 'Fone Bluetooth',
+      image: 'https://via.placeholder.com/100',
+      price: 'R$ 199,00',
+    },
+    {
+      name: 'Caixa JBL',
+      image: 'https://via.placeholder.com/100',
+      price: 'R$ 299,00',
+    },
+  ];
+  const [isCartOpen, setCartOpen] = useState(false);
 
   return (
     <header className="header">
@@ -28,6 +42,7 @@ function Header() {
         <ul className="header__top">
           <li>
             <a
+
               className="header__link header__link--top header__link--top--first"
               href=""
             >
@@ -112,17 +127,17 @@ function Header() {
                   <div className="header__submenu">
                     {page.subPages
                       ? page.subPages.map((subpage, subIndex) => (
-                          <ul className="header__submenu__list" key={subIndex}>
-                            <li className="header__submenu__item">
-                              <a
-                                className="header__submenu__anchor"
-                                href={subpage.url}
-                              >
-                                {subpage.name}
-                              </a>
-                            </li>
-                          </ul>
-                        ))
+                        <ul className="header__submenu__list" key={subIndex}>
+                          <li className="header__submenu__item">
+                            <a
+                              className="header__submenu__anchor"
+                              href={subpage.url}
+                            >
+                              {subpage.name}
+                            </a>
+                          </li>
+                        </ul>
+                      ))
                       : null}
                   </div>
                 </div>
@@ -163,15 +178,16 @@ function Header() {
                   <BiUserCircle className="header__link__icon header__link__icon--user" />
                 </a>
               </li>
-              <li className="header__item header__item--user">
+              {/* <li className="header__item header__item--user">
                 <a href="/about" className="header__link header__link--user">
                   <IoMdLogOut className="header__link__icon header__link__icon--user" />
                 </a>
-              </li>
-              <li className="header__item header__item--user">
-                <a href="/cart" className="header__link header__link--user">
-                  <AiOutlineShoppingCart className="header__link__icon header__link__icon--user" />
-                </a>
+              </li> */}
+              <li className="header__item header__item--cart">
+                <button onClick={() => setCartOpen(true)} className="header__link header__link--cart">
+                  <AiOutlineShoppingCart className="header__link__icon header__link__icon--cart" />
+                  {/* Abrir Carrinho */}
+                </button>
               </li>
             </ul>
             <button className="header__menumobile">
@@ -181,6 +197,8 @@ function Header() {
         </div>
 
         <div className="header__cta"></div>
+
+        <QuickCart isOpen={isCartOpen} onClose={() => setCartOpen(false)} cartItems={cartItems} />
       </div>
     </header>
   );
