@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-import ProductShelfCarousel from './ProductShelfCarousel'
-import ProductSimpleList from './ProductSimpleList'
-import { getProductsByIds } from '../services/productAPI'
+import Carousel from '../carousel'
+import List from '../list'
+import { getProductsByIds } from '../../services/productAPI'
 
 /**
  * @param {*} param0
@@ -33,12 +33,12 @@ const Shelf = ({ productsIDArray, type, section }) => {
   return (
     <>
       {type === 21 ? (
-        <ProductShelfCarousel
+        <Carousel
           productsArray={productsArray}
           title={section?.name}
         />
       ) : (
-        <ProductSimpleList
+        <List
           productsArray={productsArray}
           title={section?.name}
         />

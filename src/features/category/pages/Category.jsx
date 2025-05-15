@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 // import Breadcrumb from "../../../components/Breadcrumb/Breadcrumb";
 // import Filter from "../../../components/Filter/Filter";
-import Shelf from "../../product/sections/Shelf";
+import Shelf from "../../product/sections/shelf";
 
 import { MdSortByAlpha } from "react-icons/md";
 import {

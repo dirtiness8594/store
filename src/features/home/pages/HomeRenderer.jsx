@@ -9,7 +9,7 @@ import 'slick-carousel/slick/slick-theme.css'
 
 import Banner from '../../../features/banner/Banner'
 
-import Shelf from '../../../features/product/sections/Shelf'
+import Shelf from '../../../features/product/sections/shelf'
 
 import { getSections } from '../services/homeAPI';
 

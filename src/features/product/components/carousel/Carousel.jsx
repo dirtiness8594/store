@@ -1,4 +1,4 @@
-import ProductDetails from './ProductDetails'
+import DetailListing from '../detailListing';
 import ProductImage from './ProductImage'
 
 /**
@@ -7,7 +7,7 @@ import ProductImage from './ProductImage'
  * @returns
  */
 
-const ProductCarousel = ({ product }) => {
+const Carousel = ({ product }) => {
 
   console.log("Product ", product)
 
@@ -30,14 +30,14 @@ const ProductCarousel = ({ product }) => {
       className='product__item product__item--carousel'
     >
       <ProductImage image={image?.original || image?.thumbnail} alt={name} />
-      <ProductDetails
-  price={product.price}
-  name={product.name}
-  description={product.description || product.details}
-/>
+      <DetailListing
+        price={product.price}
+        name={product.name}
+        description={product.description || product.details}
+      />
 
     </a>
   )
 }
 
-export default ProductCarousel
+export default Carousel
