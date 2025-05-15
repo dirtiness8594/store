@@ -12,6 +12,7 @@ import '../../../styles/Main.scss'
  */
 
 function ProductSimpleList({ products, title, additionalClass }) {
+  console.log("Entrei")
   return (
     <div
       className={`product__list${additionalClass ? ' ' + additionalClass : ''}`}

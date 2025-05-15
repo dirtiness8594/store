@@ -11,7 +11,7 @@ function HomeIndexPage() {
   return (
     <div className='home-page'>
       <HomeRenderer />
-      <Categories />
+      {/* <Categories /> */}
     </div>
   )
 }

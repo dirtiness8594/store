@@ -11,7 +11,7 @@ import Banner from '../../../features/banner/Banner'
 
 import Shelf from '../../../features/product/sections/Shelf'
 
-import { getHomeSections } from '../services/homeAPI';
+import { getSections } from '../services/homeAPI';
 
 /**
  *
@@ -35,7 +35,7 @@ function HomeRenderer() {
   console.log("¨¨¨¨¨¨", sections)
 
   useEffect(() => {
-    getHomeSections()
+    getSections()
       .then(setSections)
       .finally(() => setLoading(false));
   }, []);
@@ -44,7 +44,39 @@ function HomeRenderer() {
 
   return (
     <div className='home-page'>
-      {sortedSectionsData
+
+      {sections && sections.length > 0 ? (
+        sections
+          .sort((a, b) => a.order - b.order)
+          .map((section, index) => {
+            const { type, itens } = section;
+
+            const isShelf = type === 20 || type === 21;
+            const isBanner = type >= 10 && type <= 14;
+            const isCategory = type === 30;
+
+            return (
+              <React.Fragment key={index}>
+                {isShelf ? (
+                  <Shelf products={itens} type={type} section={section} />
+                ) : isBanner ? (
+                  <>Banner</>
+                  // <Banner banners={itens} type={type} section={section} />
+                ) : isCategory ? (
+                  <CategorySection section={section} />
+                ) : null}
+              </React.Fragment>
+            );
+          })
+      ) : null}
+
+
+
+
+
+
+
+      {/* {sortedSectionsData
         ? sortedSectionsData.map((section, index) => {
           return (
             <React.Fragment key={index}>
@@ -56,7 +88,7 @@ function HomeRenderer() {
             </React.Fragment>
           )
         })
-        : null}
+        : null} */}
     </div>
   )
 }

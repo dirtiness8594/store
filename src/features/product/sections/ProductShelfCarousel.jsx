@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import Slider from 'react-slick'
 
@@ -8,13 +8,9 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-/**
- *
- * @param {*} param0
- * @returns
- */
+import { getProductsByIds  } from '../services/productAPI'
 
-function ProductShelfCarousel({ section }) {
+function ProductShelfCarousel({ productsArray, title }) {
   const isMobile = useMediaQuery({ maxWidth: 767 })
   const slider = React.createRef()
 
@@ -34,15 +30,31 @@ function ProductShelfCarousel({ section }) {
   const nextSlide = () => {
     slider.current.slickNext()
   }
+  const [products, setProducts] = useState([]);
 
-  if (!section || !section.products || section.products.length === 0) {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const result = await getProductsByIds(productsArray);
+        setProducts(result);
+      } catch (e) {
+        console.error('Failed to fetch products:', e);
+      }
+    };
+
+    fetchProducts();
+  }, [productsArray]);
+
+  console.log("))))))))", products)
+
+  if (!productsArray || productsArray.length === 0) {
     return null
   }
 
   return (
     <div className='product__list'>
       <div className='product__list__wrapper'>
-        <h2 className='product__category'>{section.name}</h2>
+        {title && <h2 className='product__category'>{title}</h2>}
         <div className='product__dots' style={{ display: 'none' }}>
           <button className='product__arrow' onClick={prevSlide}>
             <AiOutlineArrowLeft className='icon product__arrow__icon' />
@@ -53,8 +65,8 @@ function ProductShelfCarousel({ section }) {
         </div>
         <div className='product__shelf product__shelf--carousel'>
           <Slider ref={slider} {...sliderSettings}>
-            {section.products.map((product, index) => (
-              <ProductCarousel key={index} index={index} product={product} />
+            {products.map((product, index) => (
+              <ProductCarousel key={index} product={product} />
             ))}
           </Slider>
         </div>

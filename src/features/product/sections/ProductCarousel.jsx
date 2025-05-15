@@ -8,18 +8,32 @@ import ProductImage from './ProductImage'
  */
 
 const ProductCarousel = ({ product }) => {
+
+  console.log("Product ", product)
+
+
+
+  const {
+    name,
+    image,
+    price,
+    description,
+    friendlyUrl,
+    id
+  } = product;
+  const productPrice = price?.newPrice || price?.installment?.value;
+
+
   return (
     <a
-      href={`/product/${
-        product.friendlyUrl ? product.friendlyUrl : product.id
-      }`}
+      href={`/product/${friendlyUrl || id}`}
       className='product__item product__item--carousel'
     >
-      <ProductImage image={product.image} alt={product.name} />
+      <ProductImage image={image?.original || image?.thumbnail} alt={name} />
       <ProductDetails
-        price={product.price}
-        name={product.name}
-        description={product.description}
+        price={productPrice}
+        name={name}
+        description={description || product.details}
       />
     </a>
   )

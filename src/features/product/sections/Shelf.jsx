@@ -9,27 +9,16 @@ import ProductSimpleList from './ProductSimpleList'
  * @returns
  */
 
-const Shelf = ({ section }) => {
+const Shelf = ({ products, type, section }) => {
   return (
     <>
-      {section !== undefined
-        ? [section].map((section, index) => {
-            return (
-              <React.Fragment key={index}>
-                {section.type === 'carousel' ? (
-                  <ProductShelfCarousel section={section} />
-                ) : (
-                  <ProductSimpleList
-                    products={section.products}
-                    title={section.name}
-                  />
-                )}
-              </React.Fragment>
-            )
-          })
-        : null}
+      {type === 21 ? (
+        <ProductShelfCarousel productsArray={products} title={section.name} />
+      ) : (
+        <ProductSimpleList products={products} title={section.name} />
+      )}
     </>
-  )
-}
+  );
+};
 
 export default Shelf
