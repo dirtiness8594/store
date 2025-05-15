@@ -11,7 +11,6 @@ import Listing from '../../components/listing'
  */
 
 function List({ productsArray, title }) {
-  console.log("Entrei", productsArray)
   return (
     <div
       className={`product__list`}
@@ -28,7 +27,7 @@ function List({ productsArray, title }) {
           )}
         </div>
       </div>
-    </div>
+    </div> 
   )
 }
 

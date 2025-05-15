@@ -8,7 +8,6 @@ import DetailImage from '../detailImage'
  */
 
 const Listing = ({ product }) => {
-    console.log("Details ", product)
     return (
         <a
             href={`/product/${product.friendlyUrl ? product.friendlyUrl : product.id

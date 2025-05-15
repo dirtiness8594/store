@@ -7,7 +7,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
  */
 
 const Card = ({ bannerArray }) => {
-
+  console.log("PlUS", bannerArray)
   return (
     <section className="banner__card">
       <div className="banner__wrapper banner__wrapper--card">

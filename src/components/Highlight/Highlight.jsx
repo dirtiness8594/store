@@ -2,7 +2,7 @@ import React from 'react'
 
 import Slider from 'react-slick'
 import HighlightAdvantadges from './HighlightAdvantadges'
-import BannerSingle from '../../features/banner/BannerSingle'
+import Single from "../../features/banner/sections/Single"
 import { FaAngleDown } from 'react-icons/fa'
 
 import 'slick-carousel/slick/slick.css'
@@ -25,7 +25,6 @@ function Highlight({ bannerArray }) {
     autoplaySpeed: 3000
   }
 
-  console.log("Entreouu", bannerArray)
   if ( !bannerArray || bannerArray.length === 0) {
     return null
   }
@@ -38,7 +37,7 @@ function Highlight({ bannerArray }) {
         </div>
         <Slider {...sliderSettings}>
           {bannerArray.map((singleBanner, index) => (
-            <BannerSingle banner={singleBanner} key={index} />
+            <Single banner={singleBanner} key={index} />
           ))}
         </Slider>
 

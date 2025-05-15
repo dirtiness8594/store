@@ -2,7 +2,7 @@ import React from 'react'
 import { useMediaQuery } from 'react-responsive'
 import Slider from 'react-slick'
 
-import ProductCarousel from '../carousel'
+import CarouselListing from '../../components/carousel'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 
 import 'slick-carousel/slick/slick.css'
@@ -16,9 +16,11 @@ function ProductShelfCarousel({ productsArray, title }) {
     slidesToShow: isMobile ? 2 : 5,
     slidesToScroll: 1,
     speed: 500,
-    infinite: false,
+    infinite: true,
     dots: false,
-    centerMode: false
+    centerMode: false,
+    autoplay: true,
+    autoplaySpeed: 3000  
   }
 
   const prevSlide = () => {
@@ -29,17 +31,17 @@ function ProductShelfCarousel({ productsArray, title }) {
     slider.current.slickNext()
   }
 
-  // Não é necessário mais o estado products ou useEffect
-
   if (!productsArray || productsArray.length === 0) {
     return null
   }
+
+  console.log("XXX", productsArray)
 
   return (
     <div className='product__list'>
       <div className='product__list__wrapper'>
         {title && <h2 className='product__category'>{title}</h2>}
-        <div className='product__dots' style={{ display: 'none' }}>
+        <div className='product__dots' style={{ display: '' }}>
           <button className='product__arrow' onClick={prevSlide}>
             <AiOutlineArrowLeft className='icon product__arrow__icon' />
           </button>
@@ -49,13 +51,13 @@ function ProductShelfCarousel({ productsArray, title }) {
         </div>
         <div className='product__shelf product__shelf--carousel'>
           <Slider ref={slider} {...sliderSettings}>
-            {productsArray.length > 0 ? (
-              productsArray.map((product, index) => (
-                <ProductCarousel key={index} product={product} />
-              ))
-            ) : (
-              <p>No products available</p> // Caso não haja produtos, exibimos uma mensagem no carrossel também
-            )}
+          {productsArray && productsArray.length > 0 ? (
+            productsArray.map((product, index) => (
+              <CarouselListing key={index} product={product} />
+            ))
+          ) : (
+            <p>No products available</p> // Caso não haja produtos, podemos exibir uma mensagem.
+          )}
           </Slider>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Highlight from '../../components/Highlight/Highlight'
 import CheckOn from './sections/CheckOn'
-import BannerSingle from './BannerSingle'
 import Quick from './sections/Quick/Quick'
 import Peak from './sections/Peak'
 import Card from './sections/Card'
@@ -9,6 +8,7 @@ import Card from './sections/Card'
 import {getBannersByIds} from "./services/bannerAPI"
 
 import './styles/Banner.scss'
+import Single from './sections/Single'
 
 /**
  * 
@@ -17,8 +17,6 @@ import './styles/Banner.scss'
  */
 function Banner({ bannersIDArray, type, section }) {
   const [banners, setBanners] = useState([])
-
-  console.log("My life", bannersIDArray, type, section)
 
   useEffect(() => {
     const fetchBanners = async () => {
@@ -37,12 +35,12 @@ function Banner({ bannersIDArray, type, section }) {
 
   if (!banners || banners.length === 0) return null
 
-  console.log("nOvembe", banners)
+  console.log("PLUS !", banners)
 
   return (
     <>
       {type === 10 && <Highlight bannerArray={banners} section={section} />}
-      {type === 11 && <BannerSingle banner={banners} />}
+      {type === 11 && <Single banner={banners[0]} />}
       {type === 12 && <CheckOn bannerArray={banners} section={section} />}
       {type === 13 && <Peak bannerArray={banners} section={section} />}
       {type === 14 && <Card bannerArray={banners} section={section} />}

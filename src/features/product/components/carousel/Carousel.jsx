@@ -1,5 +1,5 @@
 import DetailListing from '../detailListing';
-import ProductImage from './ProductImage'
+import DetailImage from '../detailImage'
 
 /**
  *
@@ -7,11 +7,9 @@ import ProductImage from './ProductImage'
  * @returns
  */
 
-const Carousel = ({ product }) => {
+const CarouselListing = ({ product }) => {
 
   console.log("Product ", product)
-
-
 
   const {
     name,
@@ -23,13 +21,13 @@ const Carousel = ({ product }) => {
   } = product;
   const productPrice = price?.newPrice || price?.installment?.value;
 
-  console.log("Aqui ,", product, productPrice)
+  console.log("Aqui ,", product)
   return (
     <a
       href={`/product/${friendlyUrl || id}`}
       className='product__item product__item--carousel'
     >
-      <ProductImage image={image?.original || image?.thumbnail} alt={name} />
+      <DetailImage image={image?.original || image?.thumbnail} alt={name} />
       <DetailListing
         price={product.price}
         name={product.name}
@@ -40,4 +38,4 @@ const Carousel = ({ product }) => {
   )
 }
 
-export default Carousel
+export default CarouselListing

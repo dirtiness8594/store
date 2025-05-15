@@ -55,8 +55,6 @@ function HomeRenderer() {
             const isBanner = type >= 10 && type <= 14;
             const isCategory = type === 30;
 
-            console.log("inside beast ", section, isBanner)
-
             return (
               <React.Fragment key={index}>
                 {isShelf ? (

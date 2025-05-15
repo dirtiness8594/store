@@ -14,7 +14,6 @@ export const getProductsByIds = async (ids) => {
   try {
     if (!ids || !ids.length) return [];
     
-    console.log("CIS ", ids)
 
     // Assume que o endpoint de produto seja algo como /products/{id}
     const productPromises = ids.map(id => fetchData(`products/${id}`));

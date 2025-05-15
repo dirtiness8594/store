@@ -27,8 +27,10 @@ const Shelf = ({ productsIDArray, type, section }) => {
   }, [productsIDArray])
 
   if (!productsArray || productsArray.length === 0) {
-    return null // Ou você pode retornar um loader ou fallback visual aqui
+    return null
   }
+
+  console.log(section?.name, productsArray)
 
   return (
     <>
