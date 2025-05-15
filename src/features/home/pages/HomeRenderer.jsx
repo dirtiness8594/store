@@ -55,13 +55,14 @@ function HomeRenderer() {
             const isBanner = type >= 10 && type <= 14;
             const isCategory = type === 30;
 
+            console.log("inside beast ", section, isBanner)
+
             return (
               <React.Fragment key={index}>
                 {isShelf ? (
                   <Shelf productsIDArray={itens} type={type} section={section} />
                 ) : isBanner ? (
-                  <>Banner</>
-                  // <Banner banners={itens} type={type} section={section} />
+                  <Banner bannersIDArray={itens} type={type} section={section} />
                 ) : isCategory ? (
                   <CategorySection section={section} />
                 ) : null}

@@ -13,7 +13,7 @@ import 'slick-carousel/slick/slick-theme.css'
  * @returns
  */
 
-function Highlight({ banner }) {
+function Highlight({ bannerArray }) {
   const sliderSettings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -25,7 +25,8 @@ function Highlight({ banner }) {
     autoplaySpeed: 3000
   }
 
-  if (!banner.banners || banner.banners.length === 0) {
+  console.log("Entreouu", bannerArray)
+  if ( !bannerArray || bannerArray.length === 0) {
     return null
   }
 
@@ -36,7 +37,7 @@ function Highlight({ banner }) {
           <FaAngleDown className='banner__tip__icon' />
         </div>
         <Slider {...sliderSettings}>
-          {banner.banners.map((singleBanner, index) => (
+          {bannerArray.map((singleBanner, index) => (
             <BannerSingle banner={singleBanner} key={index} />
           ))}
         </Slider>

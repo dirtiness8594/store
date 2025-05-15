@@ -1,0 +1,97 @@
+{
+    "homePageOrder": [
+      { "id": "983792837492", "sectionName": "section-BannerHighlight", "order": 1 },
+      { "id": "983792837492", "sectionName": "section-BannerAdvantadges", "order": 2 },
+      { "id": "983792837492", "sectionName": "section-BannerHighlights", "order": 3 },
+      { "id": "983792837492", "sectionName": "section-BannerCards", "order": 3 },
+      { "id": "983792837492", "sectionName": "section-Categories", "order": 4 },
+      { "id": "983792837492", "sectionName": "section-ProductHighlight", "order": 5 },
+      { "id": "983792837492", "sectionName": "section-ProductHighlight2", "order": 6 },
+      { "id": "983792837492", "sectionName": "section-ProductSubHighlight", "order": 7 },
+      { "id": "983792837492", "sectionName": "section-BannerCheckOut", "order": 8 },
+      { "id": "983792837492", "sectionName": "section-ProductAdditional", "order": 9 },
+      { "id": "983792837492", "sectionName": "section-BannerQuickAds", "order": 10 }
+    ],
+    "productSections": [
+      {
+        "id": "098765434567890",
+        "sectionName": "section-ProductHighlight",
+        "name": "Destaque",
+        "order": 1,
+        "type": "list",
+        "products": [ /* array de produtos */ ]
+      },
+      {
+        "id": "098765434567890",
+        "sectionName": "section-ProductHighlight2",
+        "name": "Destaque",
+        "order": 1,
+        "type": "list",
+        "products": [ /* array de produtos */ ]
+      },
+      {
+        "id": "098765434567890",
+        "sectionName": "section-ProductSubHighlight",
+        "name": "Destaque",
+        "order": 2,
+        "type": "carousel",
+        "products": [ /* array de produtos */ ]
+      },
+      {
+        "id": "098765434567890",
+        "sectionName": "section-ProductAdditional",
+        "name": "Highlight",
+        "order": 3,
+        "type": "carousel",
+        "products": [ /* array de produtos */ ]
+      }
+    ],
+    "bannerSections": [
+      {
+        "id": "098765434567890",
+        "sectionName": "section-BannerHighlight",
+        "kind": "highlight",
+        "name": "Destaque",
+        "order": 44,
+        "width": "dddd",
+        "banners": [ /* array de banners */ ]
+      },
+      {
+        "id": "098765434567890",
+        "sectionName": "section-BannerHighlights",
+        "kind": "peak",
+        "name": "QuickAds",
+        "order": 4,
+        "width": "fullfill",
+        "banners": [ /* array de banners */ ]
+      },
+      {
+        "id": "098765434567890",
+        "sectionName": "section-BannerCards",
+        "kind": "card",
+        "name": "QuickAds",
+        "order": 5,
+        "width": "fullfill",
+        "banners": [ /* array de banners */ ]
+      },
+      {
+        "id": "098765434567890",
+        "sectionName": "section-BannerQuickAds",
+        "kind": "single",
+        "name": "QuickAds",
+        "order": 9,
+        "width": "fullfill",
+        "banners": [ /* array de banners */ ]
+      },
+      {
+        "id": "098765434567890",
+        "sectionName": "section-BannerCheckOut",
+        "kind": "double",
+        "name": "CheckOut",
+        "order": 15,
+        "width": "fullfill",
+        "banners": [ /* array de banners */ ]
+      }
+    ]
+  }
+  
