@@ -42,7 +42,7 @@ function Banner({ bannersIDArray, type, section }) {
   return (
     <>
       {type === 10 && <Highlight bannerArray={banners} section={section} />}
-      {type === 11 && <BannerSingle bannerArray={banners} section={section} />}
+      {type === 11 && <BannerSingle banner={banners} />}
       {type === 12 && <CheckOn bannerArray={banners} section={section} />}
       {type === 13 && <Peak bannerArray={banners} section={section} />}
       {type === 14 && <Card bannerArray={banners} section={section} />}

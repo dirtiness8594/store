@@ -6,23 +6,21 @@ import { FaArrowRightLong } from "react-icons/fa6";
  * @returns
  */
 
-const Card = ({ banner }) => {
-  console.log("fjsdiofjsd ", banner);
+const Card = ({ bannerArray }) => {
 
   return (
     <section className="banner__card">
       <div className="banner__wrapper banner__wrapper--card">
         <ul className="banner__list banner__list--card">
-          {banner.banners.map((banner, key) => {
+          {bannerArray.map((banner, key) => {
             return (
               <li className="banner__item banner__item--card" key={key}>
                 <a href="/a" className="banner__link banner__link--card">
                   <figure className="banner__figure banner__figure--card">
                     <legend className="banner__legend banner__legend--card">
-                      <span>{banner.name}</span>
+                      <span>{banner.title}</span>
                       <p>
-                        Shop today Deals, Lighning Deals, and limited-time
-                        discounts
+                        {banner.subtitle}
                       </p>
                       <button>
                         See more
@@ -31,7 +29,7 @@ const Card = ({ banner }) => {
                     </legend>
                     <img
                       className="banner__image banner__image--card"
-                      src={banner.url}
+                      src={banner.image}
                     />
                   </figure>
                 </a>

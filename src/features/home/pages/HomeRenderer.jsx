@@ -64,7 +64,8 @@ function HomeRenderer() {
                 ) : isBanner ? (
                   <Banner bannersIDArray={itens} type={type} section={section} />
                 ) : isCategory ? (
-                  <CategorySection section={section} />
+                  // <CategorySection section={section} />
+                  <></>
                 ) : null}
               </React.Fragment>
             );
