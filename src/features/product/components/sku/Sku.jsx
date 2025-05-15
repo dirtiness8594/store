@@ -6,11 +6,15 @@ import SkuSizes from './SkuSizes'
  * @returns
  */
 
-const Sku = () => {
+const Sku = ({
+  skus
+}) => {
+
+  console.log("XID ", skus)
   return (
     <div className='product__skus'>
-      <SkuSizes />
-      <SkuColors />
+      <SkuSizes sizes={skus?.sizes} />
+      <SkuColors colors={skus?.colors} />
     </div>
   )
 }

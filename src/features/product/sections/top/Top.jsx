@@ -10,7 +10,9 @@ import Finalization from "../../components/finalization/Finalization";
 import Warnings from "../../components/warnings/Warnings";
 import { generateBreadcrumb } from "/src/utils/productUtils";
 
-function Top({ productData, images }) {
+function Top({ productData }) {
+
+  console.log("******", productData)
   return (
     <div className="product__top">
       <div className="product__wrap">
@@ -24,7 +26,7 @@ function Top({ productData, images }) {
             }
           /> */}
           {/* <ImageGallery
-            items={images}
+            items={productData?.images}
             showNav={false}
             thumbnailPosition="bottom"
             showThumbnails={false}
@@ -44,7 +46,11 @@ function Top({ productData, images }) {
                 average: productData?.reviews?.average,
               }}
             />
-            <Sku />
+
+
+            <Sku skus={productData?.skus} />
+
+            
             <Freight freight={productData?.delivery} />
             <Tickets tickets={productData?.ticket} />
             <Amount amount={productData?.stock} skus={productData?.skus} />

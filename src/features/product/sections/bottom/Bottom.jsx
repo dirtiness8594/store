@@ -6,6 +6,8 @@ import ProductReview from '../../components/reviews/Reviews';
 function Bottom({ productData }) {
   return (
     <div className="product__bottom">
+
+      
       <ProductCharacteristics characteristics={productData?.characteristics} />
       <ProductDescription data={productData?.details} />
       <ProductReview data={productData?.reviews} />

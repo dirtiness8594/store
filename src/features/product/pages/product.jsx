@@ -17,7 +17,7 @@ import "../styles/Product.scss";
 
 function ProductIndexPage() {
   const { id } = useParams();
-  const [productData, setProductData] = useState(null);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +25,7 @@ function ProductIndexPage() {
         const data = await getProductData({
           productId: id,
         });
-        setProductData(data);
+        setProduct(data);
 
         console.log("!!!", data);
       } catch (error) {
@@ -50,11 +50,13 @@ function ProductIndexPage() {
     },
   ];
 
+  console.log("PUTZ ", product)
+
   return (
     <div className="product">
-      <ProductTop productData={productData} images={productData?.images} />
-      <Bottom productData={productData} />
-      <Single banner={productData?.bannerFooter} />
+      <ProductTop productData={product} />
+      <Bottom productData={product} />
+      <Single banner={product?.bannerFooter} />
     </div>
   );
 }
