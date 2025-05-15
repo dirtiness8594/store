@@ -13,7 +13,7 @@ const CarouselListing = ({ product }) => {
 
   const {
     name,
-    image,
+    images,
     price,
     description,
     friendlyUrl,
@@ -21,13 +21,13 @@ const CarouselListing = ({ product }) => {
   } = product;
   const productPrice = price?.newPrice || price?.installment?.value;
 
-  console.log("Aqui ,", product)
+  console.log("Aqui ,", product, images)
   return (
     <a
       href={`/product/${friendlyUrl || id}`}
       className='product__item product__item--carousel'
     >
-      <DetailImage image={image?.original || image?.thumbnail} alt={name} />
+      <DetailImage images={images} alt={name} />
       <DetailListing
         price={product.price}
         name={product.name}

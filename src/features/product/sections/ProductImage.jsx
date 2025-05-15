@@ -7,9 +7,13 @@ import React from 'react'
  */
 
 function ProductImage({ image, alt }) {
+
+  console.log("Image: ",image)
+
+
   return (
     <figure className='product__photo'>
-      <img className='product__image' src={image} alt={alt} />
+      <img className='product__image' src={image[0]} alt={alt} />
     </figure>
   )
 }

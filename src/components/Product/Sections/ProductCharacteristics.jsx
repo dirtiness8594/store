@@ -4,7 +4,7 @@
  */
 
 const ProductCharacteristics = ({ data }) => {
-  console.log('Characte ', data)
+  // console.log('Characte ', data)
   return (
     <section className='product__allinfo' id='description'>
       <h3 className='product__section'>

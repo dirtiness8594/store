@@ -1,17 +1,12 @@
-import React from 'react'
+function DetailImage({ images, alt }) {
 
-/**
- *
- * @param {*} param0
- * @returns
- */
 
-function DetailImage({ image, alt }) {
+  const imageUrl = images?.[0]?.original || images?.[0]?.thumbnail;
   return (
-    <figure className='product__photo'>
-      <img className='product__image' src={image} alt={alt} />
+    <figure className="product__photo">
+      <img className="product__image" src={imageUrl} alt={alt} />
     </figure>
-  )
+  );
 }
 
-export default DetailImage
+export default DetailImage;

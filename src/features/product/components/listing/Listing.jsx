@@ -8,13 +8,24 @@ import DetailImage from '../detailImage'
  */
 
 const Listing = ({ product }) => {
+
+    const {
+        name,
+        images,
+        price,
+        description,
+        friendlyUrl,
+        id
+      } = product;
+      const productPrice = price?.newPrice || price?.installment?.value;
+
     return (
         <a
             href={`/product/${product.friendlyUrl ? product.friendlyUrl : product.id
                 }`}
             className='product__item product__item--simple'
         >
-            <DetailImage image={product.image} alt={product.name} />
+            <DetailImage images={images} alt={name} />
             <DetailListing
                 price={product.price}
                 name={product.name}

@@ -35,7 +35,7 @@ function ProductShelfCarousel({ productsArray, title }) {
     return null
   }
 
-  console.log("XXX", productsArray)
+  // console.log("XXX", productsArray)
 
   return (
     <div className='product__list'>
