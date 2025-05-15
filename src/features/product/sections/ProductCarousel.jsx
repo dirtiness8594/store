@@ -23,7 +23,7 @@ const ProductCarousel = ({ product }) => {
   } = product;
   const productPrice = price?.newPrice || price?.installment?.value;
 
-
+  console.log("Aqui ,", product, productPrice)
   return (
     <a
       href={`/product/${friendlyUrl || id}`}
@@ -31,10 +31,11 @@ const ProductCarousel = ({ product }) => {
     >
       <ProductImage image={image?.original || image?.thumbnail} alt={name} />
       <ProductDetails
-        price={productPrice}
-        name={name}
-        description={description || product.details}
-      />
+  price={product.price}
+  name={product.name}
+  description={product.description || product.details}
+/>
+
     </a>
   )
 }

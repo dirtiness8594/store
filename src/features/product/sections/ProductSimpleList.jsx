@@ -11,18 +11,22 @@ import '../../../styles/Main.scss'
  * @returns
  */
 
-function ProductSimpleList({ products, title, additionalClass }) {
-  console.log("Entrei")
+function ProductSimpleList({ productsArray, title }) {
+  console.log("Entrei", productsArray)
   return (
     <div
-      className={`product__list${additionalClass ? ' ' + additionalClass : ''}`}
+      className={`product__list`}
     >
       <div className='product__list__wrapper'>
         <h2 className='product__category'>{title}</h2>
         <div className='product__shelf product__shelf--simple'>
-          {products.map((product, index) => (
-            <ProductList key={index} index={index} product={product} />
-          ))}
+        {productsArray && productsArray.length > 0 ? (
+            productsArray.map((product, index) => (
+              <ProductList key={index} product={product} />
+            ))
+          ) : (
+            <p>No products available</p> // Caso não haja produtos, podemos exibir uma mensagem.
+          )}
         </div>
       </div>
     </div>

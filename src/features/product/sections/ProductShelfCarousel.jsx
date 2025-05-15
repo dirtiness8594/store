@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useMediaQuery } from 'react-responsive'
 import Slider from 'react-slick'
 
@@ -7,8 +7,6 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-
-import { getProductsByIds  } from '../services/productAPI'
 
 function ProductShelfCarousel({ productsArray, title }) {
   const isMobile = useMediaQuery({ maxWidth: 767 })
@@ -30,22 +28,8 @@ function ProductShelfCarousel({ productsArray, title }) {
   const nextSlide = () => {
     slider.current.slickNext()
   }
-  const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const result = await getProductsByIds(productsArray);
-        setProducts(result);
-      } catch (e) {
-        console.error('Failed to fetch products:', e);
-      }
-    };
-
-    fetchProducts();
-  }, [productsArray]);
-
-  console.log("))))))))", products)
+  // Não é necessário mais o estado products ou useEffect
 
   if (!productsArray || productsArray.length === 0) {
     return null
@@ -65,9 +49,13 @@ function ProductShelfCarousel({ productsArray, title }) {
         </div>
         <div className='product__shelf product__shelf--carousel'>
           <Slider ref={slider} {...sliderSettings}>
-            {products.map((product, index) => (
-              <ProductCarousel key={index} product={product} />
-            ))}
+            {productsArray.length > 0 ? (
+              productsArray.map((product, index) => (
+                <ProductCarousel key={index} product={product} />
+              ))
+            ) : (
+              <p>No products available</p> // Caso não haja produtos, exibimos uma mensagem no carrossel também
+            )}
           </Slider>
         </div>
       </div>

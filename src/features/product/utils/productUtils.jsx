@@ -1,3 +1,15 @@
+
+
+export const getDiscountPercentage = (oldPrice, newPrice) => {
+  const oldP = parseFloat(oldPrice)
+  const newP = parseFloat(newPrice)
+  if (!isNaN(oldP) && !isNaN(newP) && oldP > newP) {
+    return Math.round(((oldP - newP) / oldP) * 100)
+  }
+  return 0
+}
+
+
 export const calculateDayOfWeek = (daysForward) => {
   const daysOfWeek = [
     'Sunday',

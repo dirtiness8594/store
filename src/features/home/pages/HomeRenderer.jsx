@@ -58,7 +58,7 @@ function HomeRenderer() {
             return (
               <React.Fragment key={index}>
                 {isShelf ? (
-                  <Shelf products={itens} type={type} section={section} />
+                  <Shelf productsIDArray={itens} type={type} section={section} />
                 ) : isBanner ? (
                   <>Banner</>
                   // <Banner banners={itens} type={type} section={section} />

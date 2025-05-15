@@ -1,45 +1,48 @@
-/**
- *
- * @param {*} param0
- * @returns
- */
+import React from 'react'
+import { getDiscountPercentage } from '../utils/productUtils'
 
-function ProductDetails({ price, name, description }) {
+function ProductDetails({ name, description, price }) {
+  const { oldPrice, newPrice, installment } = price || {}
+  const installmentText =
+    installment && installment.amount && installment.value
+      ? `${installment.amount}x de R$ ${installment.value}`
+      : null
+
   return (
-    <div className='product__details'>
+    <div className="product__details">
       <ProductDescription name={name} description={description} />
-      <ProductPrice price={price} />
-      <ProductInstallement price={price} />
+      <ProductPrice oldPrice={oldPrice} newPrice={newPrice} />
+      {installmentText && <ProductInstallment text={installmentText} />}
     </div>
   )
 }
 
-const ProductPrice = ({ price }) => {
+const ProductPrice = ({ oldPrice, newPrice }) => {
   return (
     <>
-      <span className='product__oldprice'>{price}</span>
-      <span className='product__price'>{price}</span>
-      <span className='product__off'>30% OFF</span>
+      {oldPrice && <span className="product__oldprice">R$ {oldPrice}</span>}
+      {newPrice && <span className="product__price">R$ {newPrice}</span>}
+      {oldPrice && newPrice && (
+        <span className="product__off">
+          {getDiscountPercentage(oldPrice, newPrice)}% OFF
+        </span>
+      )}
     </>
   )
 }
 
-const ProductInstallement = ({ price }) => {
-  return (
-    <div className='product__installment'>
-      <pre className='product__steps'>12x R$ 19,00</pre>
-      <pre className='product__freight'>Frete grátis full</pre>
-    </div>
-  )
-}
+const ProductInstallment = ({ text }) => (
+  <div className="product__installment">
+    <pre className="product__steps">{text}</pre>
+    <pre className="product__freight">Frete grátis full</pre>
+  </div>
+)
 
-const ProductDescription = ({ name, description }) => {
-  return (
-    <>
-      <h3 className='product__name'>{name}</h3>
-      <p className='product__shortinfo'>{description}</p>
-    </>
-  )
-}
+const ProductDescription = ({ name, description }) => (
+  <>
+    <h3 className="product__name">{name}</h3>
+    <p className="product__shortinfo">{description}</p>
+  </>
+)
 
 export default ProductDetails

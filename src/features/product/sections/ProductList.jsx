@@ -8,6 +8,7 @@ import ProductImage from './ProductImage'
  */
 
 const ProductList = ({ product }) => {
+  console.log("Details ", product)
   return (
     <a
     href={`/product/${
@@ -17,10 +18,11 @@ const ProductList = ({ product }) => {
     >
       <ProductImage image={product.image} alt={product.name} />
       <ProductDetails
-        price={product.price}
-        name={product.name}
-        description={product.description}
-      />
+  price={product.price}
+  name={product.name}
+  description={product.description || product.details}
+/>
+
     </a>
   )
 }
