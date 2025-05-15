@@ -1,33 +1,45 @@
 /**
- * @param {{ colors: Array<{ id: string, name: string, hexCode: string, amount: number }> }} props
+ *
+ * @param {{ colors: Array<{ color: string, size: string, stock: number }> }} props
  * @returns
  */
-const SkuColors = ({ colors }) => {
+const SkuColors = ({ colors, onSelect }) => {
+  // Verificação simples antes de tentar mapear as cores
+  if (!colors || colors.length === 0) {
+    return (
+      <div className="product__size">
+        <p>Sem cores disponíveis</p> {/* Ou qualquer outra mensagem que você queira */}
+      </div>
+    );
+  }
+
+  // Pegue todas as cores únicas dos SKUs
+  const uniqueColors = [...new Set(colors.map((sku) => sku.color))];
+
   return (
-    <div className='product__skus'>
-      <ul className='product__size'>
-        <li className='product__size__item product__size__item--title'>
-          Cores
+    <ul className='product__size'>
+      <li className='product__size__item product__size__item--title'>Cores</li>
+      {uniqueColors.map((color) => (
+        <li
+          key={color}
+          className='product__size__item'
+          onClick={() => onSelect(color)}
+        >
+          <span
+            className='product__size__unit'
+            style={{
+              backgroundColor: color,
+              display: 'inline-block',
+              width: '16px',
+              height: '16px',
+              borderRadius: '50%',
+              border: '1px solid #ccc',
+            }}
+            title={color}
+          />
         </li>
-        {Array.isArray(colors) &&
-        colors.map((color) => (
-          <li key={color.id} className='product__size__item'>
-            <span
-              className='product__size__unit'
-              title={`${color.name} (${color.amount} disponíveis)`}
-              style={{
-                backgroundColor: color.hexCode,
-                display: 'inline-block',
-                width: '16px',
-                height: '16px',
-                borderRadius: '50%',
-                border: '1px solid #ccc'
-              }}
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
+      ))}
+    </ul>
   );
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState } from "react";
 // import Breadcrumb from "../../../../components/Breadcrumb/Breadcrumb";
 import ImageGallery from "react-image-gallery";
 import ProductDetailsIndex from "../../components/detail/Detail";
@@ -11,6 +11,39 @@ import Warnings from "../../components/warnings/Warnings";
 import { generateBreadcrumb } from "/src/utils/productUtils";
 
 function Top({ productData }) {
+
+  const [selectedSku, setSelectedSku] = useState(null);
+  const [quantity, setQuantity] = useState(0);
+
+  const handleSizeOrColorSelect = (sku) => {
+    setSelectedSku(sku);
+  };
+
+  const handleQuantityChange = (qty) => {
+    setQuantity(qty);
+  };
+
+  const handleAddToCart = () => {
+
+    console.log("Finalize", productData.id)
+    if (!selectedSku || quantity <= 0) return;
+
+    const cartItem = {
+      productId: productData.id,
+      name: productData.name,
+      skuId: selectedSku.id,
+      skuName: selectedSku.name,
+      quantity,
+      price: productData.price.newPrice,
+      image: productData.images?.[0]?.thumbnail || '',
+    };
+
+    console.log('ADICIONANDO AO CARRINHO:', cartItem);
+    // Aqui você pode salvar no localStorage, chamar um context, ou API
+  };
+
+  const canFinalize = selectedSku && quantity > 0;
+
 
   console.log("******", productData)
   return (
@@ -48,13 +81,20 @@ function Top({ productData }) {
             />
 
 
-            <Sku skus={productData?.skus} />
+            {/* Rename for Skus & Amount */}
+            <Sku skus={productData?.skus} defaultStock={productData?.stock} />
 
-            
+
+            {/**
+             * Fix later
+             */}
             <Freight freight={productData?.delivery} />
+
             <Tickets tickets={productData?.ticket} />
-            <Amount amount={productData?.stock} skus={productData?.skus} />
-            <Finalization />
+            
+
+            <Finalization onAddToCart={handleAddToCart} canFinalize={canFinalize} />
+
             <Warnings />
           </div>
         </section>
