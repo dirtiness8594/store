@@ -35,7 +35,6 @@ function Banner({ bannersIDArray, type, section }) {
 
   if (!banners || banners.length === 0) return null
 
-  console.log("PLUS !", banners)
 
   return (
     <>

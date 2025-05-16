@@ -8,7 +8,6 @@ import { getFiltersData } from '../../api'
  */
 
 function Filter({ categoryId }) {
-  console.log('&&&', categoryId)
 
   const [selectedFilters, setSelectedFilters] = useState([])
   const [filterGroups, setFilterGroups] = useState(null)
@@ -21,7 +20,6 @@ function Filter({ categoryId }) {
         })
         setFilterGroups(data)
 
-        console.log(data)
       } catch (error) {
         console.error('Ocorreu um erro:', error)
       }

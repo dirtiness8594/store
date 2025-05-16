@@ -32,7 +32,6 @@ function HomeRenderer() {
   const [sections, setSections] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log("¨¨¨¨¨¨", sections)
 
   useEffect(() => {
     getSections()

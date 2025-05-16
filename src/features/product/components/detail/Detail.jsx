@@ -59,7 +59,6 @@ const ProductDescription = ({ name, description }) => {
 }
 
 const ProductRate = ({ rate }) => {
-  console.log('&&&&', rate)
   if (rate.average > 5 || rate.average < 0) return
 
   console.log('¨¨')

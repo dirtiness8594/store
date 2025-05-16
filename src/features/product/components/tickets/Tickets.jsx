@@ -8,7 +8,6 @@ import { BsTicketPerforated } from 'react-icons/bs'
 
 const Tickets = ({ tickets }) => {
 
-  console.log("Tickets", tickets)
   return (
     <>
       {tickets ? (

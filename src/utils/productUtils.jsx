@@ -20,7 +20,6 @@ export const calculateDayOfWeek = (daysForward) => {
 }
 
 export const generateBreadcrumb = ({ info, category }) => {
-  console.log(info, category)
   const breadcrumb = [{ label: 'Voltar', url: '/' }, { label: 'Home', url: '/' }]
 
   if (category && category.name && category.path) {
