@@ -1,4 +1,4 @@
-#  🛒 store
+#  🛒 store [ Progress ]
 
 Store is a fully functional e-commerce front-end built with modern web technologies. Designed for educational and portfolio purposes, it includes the core features expected in a real online store — from product listing to shopping cart and user reviews.
 
