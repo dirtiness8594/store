@@ -1,22 +1,12 @@
-/**
- *
- * @param {{ sizes: Array<{ color: string, size: string, stock: number }> }} props
- * @returns
- */
-
-const SkuSizes = ({ sizes, onSelect, selectedSize }) => {
-  if (!sizes || sizes.length === 0) return null;
-
-  const uniqueSizes = [...new Set(sizes.map(sku => sku.size))];
-
+const SkuSizes = ({ sizes, selectedSize, onSelectSize }) => {
   return (
     <ul className="product__size">
       <li className="product__size__item product__size__item--title">Tamanhos</li>
-      {uniqueSizes.map(size => (
+      {sizes.map((size) => (
         <li
           key={size}
           className={`product__size__item ${selectedSize === size ? 'selected' : ''}`}
-          onClick={() => onSelect(size)}
+          onClick={() => onSelectSize(size)}
         >
           <span className="product__size__unit">{size}</span>
         </li>
@@ -24,6 +14,5 @@ const SkuSizes = ({ sizes, onSelect, selectedSize }) => {
     </ul>
   );
 };
-
 
 export default SkuSizes;

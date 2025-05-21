@@ -6,7 +6,7 @@ import ProductDetailsIndex from "../../components/detail/Detail";
 import Sku from "../../components/sku/Sku";
 import Freight from "../../components/freights/Freights";
 import Tickets from "../../components/tickets/Tickets";
-import Amount from "../../components/amount/Amount";
+
 import Finalization from "../../components/finalization/Finalization";
 import Warnings from "../../components/warnings/Warnings";
 import { generateBreadcrumb } from "/src/utils/productUtils";

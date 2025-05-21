@@ -3,17 +3,15 @@
  * @param {{ colors: Array<{ color: string, size: string, stock: number }> }} props
  * @returns
  */
-const SkuColors = ({ colors, onSelect, selectedColor }) => {
-  const uniqueColors = [...new Set(colors.map(sku => sku.color))];
-
+const SkuColors = ({ colors, selectedColor, onSelectColor }) => {
   return (
     <ul className="product__color">
       <li className="product__color__item product__color__item--title">Cores</li>
-      {uniqueColors.map(color => (
+      {colors.map((color) => (
         <li
           key={color}
           className={`product__color__item ${selectedColor === color ? 'selected' : ''}`}
-          onClick={() => onSelect(color)}
+          onClick={() => onSelectColor(color)}
         >
           <span className="product__color__unit">{color}</span>
         </li>
@@ -21,6 +19,5 @@ const SkuColors = ({ colors, onSelect, selectedColor }) => {
     </ul>
   );
 };
-
 
 export default SkuColors;
