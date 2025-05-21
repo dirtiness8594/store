@@ -11,6 +11,8 @@ import Finalization from "../../components/finalization/Finalization";
 import Warnings from "../../components/warnings/Warnings";
 import { generateBreadcrumb } from "/src/utils/productUtils";
 
+import useCartStore from "../../../../store/cartStore";
+
 import 'photoswipe/dist/photoswipe.css';
 import { Gallery, Item } from 'react-photoswipe-gallery';
 
@@ -20,6 +22,9 @@ function Top({ productData }) {
   const [selectedSku, setSelectedSku] = useState(null);
   const [quantity, setQuantity] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const { addToCart } = useCartStore();
+
 
   if (!productData?.images || productData.images.length === 0) return null;
 
@@ -35,9 +40,7 @@ function Top({ productData }) {
       console.warn("Selecione um SKU válido e uma quantidade.");
       return;
     }
-
-    console.log("XIS", selectedSku)
-
+  
     const cartItem = {
       productId: productData.id,
       name: productData.name,
@@ -47,10 +50,11 @@ function Top({ productData }) {
       price: productData.price.newPrice,
       image: productData.images?.[0]?.thumbnail || "",
     };
-
-    console.log("ADICIONANDO AO CARRINHO:", cartItem);
-    // salvar no localStorage ou via context/API
+  
+    addToCart(cartItem); // ✅ Adiciona ao Zustand e localStorage
+    console.log("Adicionado ao carrinho:", cartItem);
   };
+  
 
   return (
     <div className="product__top">
