@@ -1,78 +1,68 @@
 import React, { useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { BsTrash } from 'react-icons/bs'
-
 import Slider from 'react-slick'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
 import { fetchData } from '../../../../api'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { updateCartItems } from '../../services/cartAPI'
 
-/**
- *
- * @param {*} param0
- * @returns
- */
-
-const Product = ({ user }) => {
-
-  const [cart, setCart] = useState(null); // Estado para armazenar o carrinho do usuário
-  const [loading, setLoading] = useState(true); // Estado para indicar o carregamento dos dados
-
-
+const Product = () => {
+  const [user, setUser] = useState(null)
+  const [cart, setCart] = useState(null)
+  const [loading, setLoading] = useState(true)
   const isMobile = useMediaQuery({ maxWidth: 767 })
   const slider = React.createRef()
 
-  /**
-   * 
-   * @returns 
-   * 
-   */
-
-  const fetchCartData = async () => {
-    if (!user) return; // Se não houver usuário, não faz a consulta
-  
-    setLoading(true); // Marca como "carregando" antes de fazer a requisição
-  
-    try {
-      console.log('Buscando carrinho para o usuário:', user.id);
-      const data = await fetchData(`carts/${user.id}`); // Supondo que o endpoint seja 'carts/{userId}.json'
-      console.log('Carrinho recebido:', data);
-  
-      if (data && data.items) {
-        setCart(data); // Verifique se `data.items` realmente existe
-      } else {
-        setCart({ items: [], totalPrice: 0 }); // Carrinho vazio
-      }
-    } catch (error) {
-      console.error('Erro ao buscar carrinho:', error);
-      setCart({ items: [], totalPrice: 0 });
-    } finally {
-      setLoading(false); // Finaliza o carregamento
-    }
-  };
-  
+  const auth = getAuth()
 
   useEffect(() => {
-    fetchCartData();
-  }, [user]); // Reexecuta quando o `user` mudar
+    // Escuta o login/logout
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser)
+      } else {
+        setUser(null)
+        setCart({ items: [], totalPrice: 0 })
+      }
+    })
 
-  // Exibir carregando enquanto os dados estão sendo buscados
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
-  console.log("CAR ", cart)
+    return () => unsubscribe() // cleanup
+  }, [])
 
-  // Caso o carrinho não exista ou esteja vazio
-  if (!cart || cart.items.length === 0) {
-    return <div>Seu carrinho está vazio.</div>;
-  }
+  useEffect(() => {
+    const fetchCartData = async () => {
+      if (!user) return
 
-  /**
-   * 
-   * 
-   */
+      setLoading(true)
+      try {
+        console.log('Buscando carrinho para o usuário:', user.uid)
+        const data = await fetchData(`carts/${user.uid}`)
+        if (data && data.items) {
+          setCart(data)
+        } else {
+          setCart({ items: [], totalPrice: 0 })
+        }
+      } catch (error) {
+        console.error('Erro ao buscar carrinho:', error)
+        setCart({ items: [], totalPrice: 0 })
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchCartData()
+  }, [user])
+
+  if (loading) return <div>Carregando...</div>
+  if (!cart || cart.items.length === 0) return <div>Seu carrinho está vazio.</div>
+
+  const totalPrice = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const totalItems = cart.items.reduce((sum, item) => sum + item.quantity, 0)
+
   const sliderSettings = {
     slidesToShow: isMobile ? 5 : 3,
     slidesToScroll: 1,
@@ -82,96 +72,46 @@ const Product = ({ user }) => {
     centerMode: false
   }
 
-  const handleRemoveQuantity = (item) => {
-    const updatedCart = cartItems.map((cartItem) => {
-      if (cartItem.id === item.id && cartItem.quantity > 0) {
-        return { ...cartItem, quantity: cartItem.quantity - 1 }
-      }
-      return cartItem
-    })
-    setCartItems(updatedCart)
-  }
+ 
+const handleRemoveItem = async (itemToRemove) => {
+  console.log("OLD CART ", cart, itemToRemove)
+  const updatedItems = cart.items.filter(item => item.skuId !== itemToRemove.skuId);
+  setCart({ ...cart, items: updatedItems });
 
-  const handleAddQuantity = (item) => {
-    const updatedCart = cartItems.map((cartItem) => {
-      if (cartItem.id === item.id) {
-        return { ...cartItem, quantity: cartItem.quantity + 1 }
-      }
-      return cartItem
-    })
-    setCartItems(updatedCart)
-  }
+    console.log("New cart ", cart)
 
-  const handleRemoveItem = (item) => {
-    const updatedCart = cartItems.filter((cartItem) => cartItem.id !== item.id)
-    setCartItems(updatedCart)
+  try {
+    await updateCartItems(user.uid, updatedItems);
+  } catch (error) {
+    console.error('Erro ao atualizar carrinho:', error);
   }
+};
+  
 
   return (
     <section>
       <div className='checkout__wrap'>
         <p className='checkout__title'>Meus produtos</p>
-
-        <Slider ref={slider} {...sliderSettings} className='checkout__list'>
           {cart.items.map((item) => (
             <li className='checkout__item' key={item.id}>
-              <img
-                className='checkout__item-image'
-                src={item.image}
-                alt={item.name}
-              />
+              <img className='checkout__item-image' src={item.image} alt={item.name} />
               <div className='checkout__item-details'>
                 <h3 className='checkout__item-name'>
                   {item.name}
                   <span className='checkout__item-price'>${item.price}</span>
                 </h3>
-                <div className='checkout__item-quantity'>
-                  {/* <button
-                    onClick={() => handleRemoveQuantity(item)}
-                    className='checkout__quantity--less'
-                  >
-                    -
-                  </button>
-                  <input
-                    type='number'
-                    value={item.quantity}
-                    className='checkout__amount'
-                    onChange={(e) => {
-                      if (e.target.value >= 0) {
-                        const updatedCart = cartItems.map((cartItem) => {
-                          if (cartItem.id === item.id) {
-                            return {
-                              ...cartItem,
-                              quantity: parseInt(e.target.value)
-                            }
-                          }
-                          return cartItem
-                        })
-                        setCartItems(updatedCart)
-                      }
-                    }}
-                  />
-                  <button
-                    onClick={() => handleAddQuantity(item)}
-                    className='checkout__quantity--add'
-                  >
-                    +
-                  </button> */}
-                </div>
-                <button
-                  onClick={() => handleRemoveItem(item)}
-                  className='checkout__quantity--remove'
-                >
+                <button onClick={() => handleRemoveItem(item)} className='checkout__quantity--remove'>
                   <BsTrash />
                 </button>
               </div>
             </li>
           ))}
+        <Slider ref={slider} {...sliderSettings} className='checkout__list'>
         </Slider>
       </div>
       <div className='checkout__total'>
         <div className='checkout__wrap'>
-          Total Items: {cart.items.length} | R$ {cart.totalPrice}
+          Total Items: {totalItems} | R$ {totalPrice.toFixed(2)}
         </div>
       </div>
     </section>

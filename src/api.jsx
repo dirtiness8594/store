@@ -29,6 +29,23 @@ export async function postData(endpoint, data) {
   return response.json();
 }
 
+export async function patchData(endpoint, data) {
+  const url = `${apiUrl}/${endpoint}.json`;
+  console.log("PATCH", url, data);
+  const response = await fetch(url, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (!response.ok) {
+    throw new Error("Erro ao atualizar dados na API.");
+  }
+  return response.json();
+}
+
+
 // Store
 export async function getStoreInfoData() {
   try {
