@@ -6,7 +6,7 @@ import { fetchData } from '../../api'
 export const getHeaderData = async () => {
   try {
       const data = await fetchData('header');
-      return data.sections || data || [];
+      return data || [];
   } catch (error) {
       console.error('Error fetching sections:', error);
       throw error;
@@ -16,15 +16,10 @@ export const getHeaderData = async () => {
 
 export const getFooterData = async () => {
   try {
-    const response = await fetchData('pages/footer'); // substitua pela rota correta se necessário
-    if (!response.ok) {
-      throw new Error('Erro ao buscar dados do footer');
-    }
-
-    const data = await response.json();
-    return data.footer || [];
+      const data = await fetchData('footer');
+      return data || [];
   } catch (error) {
-    console.error('Erro ao buscar footer:', error);
-    return [];
+      console.error('Error fetching sections:', error);
+      throw error;
   }
-};
+};  
