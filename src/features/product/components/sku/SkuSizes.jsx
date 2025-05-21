@@ -3,17 +3,16 @@
  * @param {{ sizes: Array<{ color: string, size: string, stock: number }> }} props
  * @returns
  */
-const SkuSizes = ({ sizes, onSelect }) => {
-  // Verificação simples antes de tentar mapear os sizes
+
+const SkuSizes = ({ sizes, onSelect, selectedSize }) => {
   if (!sizes || sizes.length === 0) {
     return (
       <div className="product__color">
-        <p>Sem tamanhos disponíveis</p> {/* Ou qualquer outra mensagem que você queira */}
+        <p>Sem tamanhos disponíveis</p>
       </div>
     );
   }
 
-  // Pegue os tamanhos disponíveis para a cor selecionada
   const uniqueSizes = [...new Set(sizes.map((sku) => sku.size))];
 
   return (
@@ -22,7 +21,7 @@ const SkuSizes = ({ sizes, onSelect }) => {
       {uniqueSizes.map((size) => (
         <li
           key={size}
-          className='product__color__item'
+          className={`product__color__item ${selectedSize === size ? 'selected' : ''}`}
           onClick={() => onSelect(size)}
         >
           <span className='product__color__unit'>{size}</span>

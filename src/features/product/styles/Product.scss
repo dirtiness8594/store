@@ -419,6 +419,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0.5rem;
+    gap: 2rem;
     column-gap: 16px;
 
     &__button {
@@ -459,6 +460,12 @@
         width: 100%;
         margin: 0 0 16px;
       }
+
+      &.selected {
+        border: 2px solid #000;
+        background-color: #f0f0f0;
+        font-weight: bold;
+      }
     }
 
     &__unit {
@@ -487,11 +494,11 @@
     }
 
     &__unit {
-      display: block;
-      height: 12px;
-      width: 16px;
+      // display: block;
+      // // height: 12px;
+      // // width: 16px;
       cursor: pointer;
-      background-color: aquamarine;
+      // background-color: aquamarine;
     }
   }
 

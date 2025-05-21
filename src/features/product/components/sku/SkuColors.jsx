@@ -3,7 +3,7 @@
  * @param {{ colors: Array<{ color: string, size: string, stock: number }> }} props
  * @returns
  */
-const SkuColors = ({ colors, onSelect }) => {
+const SkuColors = ({ colors, onSelect, selectedColor }) => {
   // Verificação simples antes de tentar mapear as cores
   if (!colors || colors.length === 0) {
     return (
@@ -22,21 +22,22 @@ const SkuColors = ({ colors, onSelect }) => {
       {uniqueColors.map((color) => (
         <li
           key={color}
-          className='product__size__item'
+          className={`product__color__item ${selectedColor === color ? 'selected' : ''}`}
           onClick={() => onSelect(color)}
         >
           <span
             className='product__size__unit'
             style={{
-              backgroundColor: color,
-              display: 'inline-block',
-              width: '16px',
-              height: '16px',
-              borderRadius: '50%',
-              border: '1px solid #ccc',
+              // backgroundColor: color,
+              // display: 'inline-block',
+              // width: '16px',
+              // height: '16px',
+              // borderRadius: '50%',
+              // border: '1px solid #ccc',
             }}
             title={color}
-          />
+          >{
+            color}</span>
         </li>
       ))}
     </ul>

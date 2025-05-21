@@ -35,10 +35,13 @@ const Sku = ({ skus, defaultStock }) => {
 
   const currentAmount = selectedAmount ?? defaultStock;
 
+
+  console.log("SKU ", skus)
+
   return (
     <div className='product__skus'>
-      <SkuSizes sizes={skus} onSelect={handleSizeSelect} />
-      <SkuColors colors={skus} onSelect={handleColorSelect} />
+      <SkuSizes sizes={skus} onSelect={handleSizeSelect} selectedSize={selectedSize} />
+      <SkuColors colors={skus} onSelect={handleColorSelect} selectedColor={selectedColor}  />
       <Amount amount={currentAmount} skus={skus} />
     </div>
   );
