@@ -17,19 +17,36 @@ function Footer() {
     });
   }, []);
 
-  console.log("Footer", footerPages)
-  const firstSections = footerData.filter((item) =>
-    item.hasOwnProperty('title')
-  )
-  const lastSectionWithoutTitle = footerData
-    .filter((section) => !section.title)
-    .pop()
+    useEffect(() => {
+      const fetchFooterPages = async () => {
+        try {
+          const result = await getFooterData()
+          setFooterData(result)
+        } catch (e) {
+          console.error('Failed to fetch banners:', e)
+        }
+      }
+  
+      if (true) {
+        fetchFooterPages()
+      }
+    }, [])
+
+  // console.log("Footer", footerPages)
+  // const firstSections = footerData.filter((item) =>
+  //   item.hasOwnProperty('title')
+  // )
+  // const lastSectionWithoutTitle = footerData
+  //   .filter((section) => !section.title)
+  //   .pop()
+
+  console.log("Fuuter ", footerData)
 
   return (
     <footer className='footer'>
       <div className='footer__wrapper'>
         <div className='footer__pages'>
-          {firstSections.map((section, index) => {
+          {/* {firstSections.map((section, index) => {
             return (
               <ul className='footer__pages__section' key={index}>
                 <li className='footer__pages__name'>
@@ -54,12 +71,12 @@ function Footer() {
                 })}
               </ul>
             )
-          })}
+          })} */}
         </div>
         <div className='footer__content'>
           <p className='footer__text'>Copyright © 2023</p>
           <ul className='footer__list'>
-          {lastSectionWithoutTitle && lastSectionWithoutTitle.pages && (
+          {/* {lastSectionWithoutTitle && lastSectionWithoutTitle.pages && (
   <>
     {lastSectionWithoutTitle.pages.map((page, index) => (
       <li className='footer__item' key={index}>
@@ -69,7 +86,7 @@ function Footer() {
       </li>
     ))}
   </>
-)}
+)} */}
 
             <li className='footer__item footer__item--powered'>
               Made with :heart: by Isaiah
