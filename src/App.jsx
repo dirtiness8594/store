@@ -8,6 +8,8 @@ import Cart from './features/cart/pages'
 import './styles/Main.scss'
 import Category from "./features/category/pages"
 import InstitutionalIndexPage from './features/institutional/pages'
+import Login from './features/login/pages/login'
+import Dashboard from './features/dashboard/pages'
 
 /**
  *
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
   {
     path: '/institutional/:name',
     element: <InstitutionalIndexPage />
+  },
+  {
+    path:'/login',
+    element: <Login />
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />
   }
 ])
 
