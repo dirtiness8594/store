@@ -4,7 +4,7 @@ const apiUrl = import.meta.env.VITE_FIREBASE_DATABASE_URL
 
 export async function fetchData(endpoint) {
   const url = `${apiUrl}/${endpoint}.json`;
-  console.log("GET", url);
+  // console.log("GET", url);
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error("Não foi possível obter os dados da API.");

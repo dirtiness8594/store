@@ -30,7 +30,7 @@ const Shelf = ({ productsIDArray, type, section }) => {
     return null
   }
 
-  console.log(section?.name, productsArray)
+  // console.log(section?.name, productsArray)
 
   return (
     <>

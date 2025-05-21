@@ -9,7 +9,7 @@ import DetailImage from '../detailImage'
 
 const CarouselListing = ({ product }) => {
 
-  console.log("Product ", product)
+  // console.log("Product ", product)
 
   const {
     name,
@@ -21,7 +21,7 @@ const CarouselListing = ({ product }) => {
   } = product;
   const productPrice = price?.newPrice || price?.installment?.value;
 
-  console.log("Aqui ,", product, images)
+  // console.log("Aqui ,", product, images)
   return (
     <a
       href={`/product/${friendlyUrl || id}`}
