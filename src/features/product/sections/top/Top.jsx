@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import Breadcrumb from "../../../../components/Breadcrumb/Breadcrumb";
 import ImageGallery from "react-image-gallery";
 import ProductDetailsIndex from "../../components/detail/Detail";
@@ -19,60 +19,44 @@ function Top({ productData }) {
 
   const [selectedSku, setSelectedSku] = useState(null);
   const [quantity, setQuantity] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const handleSizeOrColorSelect = (sku) => {
-    setSelectedSku(sku);
-  };
+  if (!productData?.images || productData.images.length === 0) return null;
 
-  const handleQuantityChange = (qty) => {
-    setQuantity(qty);
+  const selectedImage = productData.images[selectedIndex];
+  const canFinalize = selectedSku && quantity > 0;
+
+  const handleQuantityChange = (newQuantity) => {
+    setQuantity(newQuantity);
   };
 
   const handleAddToCart = () => {
+    if (!selectedSku || quantity <= 0) {
+      console.warn("Selecione um SKU válido e uma quantidade.");
+      return;
+    }
 
-    console.log("Finalize", productData.id)
-    if (!selectedSku || quantity <= 0) return;
+    console.log("XIS", selectedSku)
 
     const cartItem = {
       productId: productData.id,
       name: productData.name,
       skuId: selectedSku.id,
-      skuName: selectedSku.name,
+      skuName: selectedSku.name || `${selectedSku.color} - ${selectedSku.size}`,
       quantity,
       price: productData.price.newPrice,
-      image: productData.images?.[0]?.thumbnail || '',
+      image: productData.images?.[0]?.thumbnail || "",
     };
 
-    console.log('ADICIONANDO AO CARRINHO:', cartItem);
-    // Aqui você pode salvar no localStorage, chamar um context, ou API
+    console.log("ADICIONANDO AO CARRINHO:", cartItem);
+    // salvar no localStorage ou via context/API
   };
-
-  const canFinalize = selectedSku && quantity > 0;
-
-  console.log("******", productData, productData?.images)
-
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  // Verificando se existe pelo menos uma imagem para evitar erros
-  if (!productData?.images || productData?.images.length === 0) return null;
-
-  const selectedImage = productData?.images[selectedIndex];
-
-  console.log("Selected ", selectedImage)
 
   return (
     <div className="product__top">
       <div className="product__wrap">
+        {/* Seção de imagens */}
         <section className="product__zoom">
-          {/* <Breadcrumb
-            style="breadcrumb--product"
-            paths={
-              productData?.info && productData?.category
-                ? generateBreadcrumb(productData.info, productData.category)
-                : []
-            }
-          /> */}
-
           <div className="product__gallery">
             <div className="highlighted-image" style={{ maxWidth: '600px', marginBottom: '16px' }}>
               <img
@@ -87,14 +71,13 @@ function Top({ productData }) {
               />
             </div>
 
-            {/* Carrossel de Miniaturas */}
             <div style={{ display: 'flex', gap: '8px' }}>
               {productData?.images.map((img, index) => (
                 <img
                   key={index}
-                  src={img.thumbnail} // Usando a thumbnail no carrossel
+                  src={img.thumbnail}
                   alt={`Imagem do carrossel ${index + 1}`}
-                  onClick={() => setSelectedIndex(index)} // Alterando a imagem de destaque ao clicar
+                  onClick={() => setSelectedIndex(index)}
                   style={{
                     width: '60px',
                     height: '60px',
@@ -107,8 +90,8 @@ function Top({ productData }) {
               ))}
             </div>
           </div>
-
         </section>
+
         <section className="product__about">
           <div className="product__tech">
             <ProductDetailsIndex
@@ -121,21 +104,18 @@ function Top({ productData }) {
               }}
             />
 
+            {/* SKU com controle de estoque e quantidade */}
+            <Sku
+              skus={productData?.skus}
+              defaultStock={productData?.stock}
+              onSkuChange={setSelectedSku}
+              onQuantityChange={setQuantity}
+            />
 
-            {/* Rename for Skus & Amount */}
-            <Sku skus={productData?.skus} defaultStock={productData?.stock} />
 
-
-            {/**
-             * Fix later
-             */}
             <Freight freight={productData?.delivery} />
-
             <Tickets tickets={productData?.ticket} />
-
-
             <Finalization onAddToCart={handleAddToCart} canFinalize={canFinalize} />
-
             <Warnings />
           </div>
         </section>
@@ -143,5 +123,6 @@ function Top({ productData }) {
     </div>
   );
 }
+
 
 export default Top;
