@@ -4,13 +4,15 @@ import ProductDescription from '../../../../components/Product/Sections/ProductD
 import ProductReview from '../../components/reviews/Reviews';
 
 function Bottom({ productData }) {
+
   return (
     <div className="product__bottom">
 
+
       
       <ProductCharacteristics characteristics={productData?.characteristics} />
-      <ProductDescription data={productData?.details} />
-      <ProductReview data={productData?.reviews} />
+      <ProductDescription description={productData?.details} />
+      <ProductReview reviewIds={productData?.reviews} />
     </div>
   );
 }

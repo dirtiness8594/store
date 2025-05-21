@@ -26,3 +26,24 @@ export const getProductsByIds = async (ids) => {
   }
 };
 
+
+/**
+ * Fetches review data for a list of review IDs.
+ * @param {string[]} ids - Array of review IDs
+ * @returns {Promise<object[]>} - Array of review objects
+ */
+export const getReviewsByIds = async (ids) => {
+  try {
+    if (!ids || !ids.length) return [];
+
+    // Assume que o endpoint seja /reviews/{id}
+    const reviewPromises = ids.map((id) => fetchData(`reviews/${id}`));
+
+    const reviews = await Promise.all(reviewPromises);
+    return reviews.filter(Boolean); // Remove reviews inválidas
+  } catch (error) {
+    console.error('Error fetching reviews by IDs:', error);
+    throw error;
+  }
+};
+
